@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تصدير التقرير</title>
+  <link rel="stylesheet" href="export.css" />
+</head>
+<body>
+  <div class="container">
+    <h2><img src="/icon/save1.png" class="page-title"> تصدير التقرير</h2>
+    <p class="page-desc">قم بتخصيص وتصدير تقارير تجربة المريض حسب احتياجاتك</p>
+
+    <div class="report-grid">
+      <!-- إعدادات التقرير -->
+      <div class="report-settings-box">
+        <h3 class="section-title">
+          <img src="/icon/setting.png" alt="إعدادات" class="icon-setting">
+          إعدادات التقرير
+        </h3>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> إظهار بيانات المرضى</label>
+          <label><input type="checkbox"> إظهار بيانات الموظفين</label>
+        </div>
+        <hr class="divider">
+        <div class="format-section">
+          <p>تنسيق التقرير:</p>
+          <div class="format-options">
+            <label class="format-option">
+              <input type="radio" name="format" checked>
+              <img src="/icon/Eexel1.png" alt="Excel">
+              Excel
+            </label>
+            <label class="format-option">
+              <input type="radio" name="format">
+              <img src="/icon/pdf1.png" alt="PDF">
+              PDF
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- نوع البيانات -->
+      <div class="report-datatype-box">
+        <h3 class="section-title">
+          <img src="/icon/filtter.png" alt="فلترة" class="icon-setting">
+          نوع البيانات
+        </h3>
+        <div class="checkbox-icon-group">
+          <label class="checkbox-icon-option">
+            <input type="checkbox">
+            <img src="/icon/docc.png" alt="">
+            جميع الشكاوى
+          </label>
+          <label class="checkbox-icon-option">
+            <input type="checkbox">
+            <img src="/icon/docc.png" alt="">
+            الشكاوى المتكررة فقط
+          </label>
+          <label class="checkbox-icon-option">
+            <input type="checkbox">
+            <img src="/icon/docc.png" alt="">
+            الشكاوى المغلقة
+          </label>
+          <label class="checkbox-icon-option">
+            <input type="checkbox">
+            <img src="/icon/docc.png" alt="">
+            الشكاوى غير المجاب عليها
+          </label>
+          <label class="checkbox-icon-option">
+            <input type="checkbox">
+            <img src="/icon/analysis.png" alt="">
+            تحليل + اقتراحات تحسين
+          </label>
+          <label class="checkbox-icon-option">
+            <input type="checkbox">
+            <img src="/icon/doc3.png" alt="">
+            مرفقات الشكاوى
+          </label>
+        </div>
+      </div>
+
+      <!-- الفترة الزمنية -->
+      <div class="report-dates-box">
+        <h3 class="section-title">
+          <img src="/icon/calender.png" alt="calendar" class="icon-setting">
+          الفترة الزمنية
+        </h3>
+        <div class="date-button">
+          <button class="time-option" onclick="selectTime(this)"><img src="/icon/today.png" alt=""> اليوم الحالي</button>
+          <button class="time-option" onclick="selectTime(this)"><img src="/icon/week.png" alt=""> آخر 7 أيام</button>
+          <button class="time-option" onclick="selectTime(this)"><img src="/icon/month.png" alt=""> آخر شهر</button>
+        </div>
+        <div class="custom-date-label">اختيار مخصص:</div>
+        <div class="custom-date-range">
+          <div class="date-field">
+            <label>من تاريخ</label>
+            <div class="input-date"><input type="date"><img src="/icon/fromto.png" alt=""></div>
+          </div>
+          <div class="date-field">
+            <label>إلى تاريخ</label>
+            <div class="input-date"><input type="date"><img src="/icon/fromto.png" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ ملخص التقرير -->
+    <div class="summary-box">
+      <div class="summary-title">ملخص التقرير</div>
+      <div class="summary-content">
+        <div class="summary-item">
+          <div class="summary-label">الفترة</div>
+          <div class="summary-value" id="selected-period">—</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">عدد الشكاوى</div>
+          <div class="summary-value">87</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">الشكاوى المتكررة</div>
+          <div class="summary-value">18</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">الشكاوى المغلقة</div>
+          <div class="summary-value">52</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">التنسيق</div>
+          <div class="summary-value" id="formatType">Excel</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ زر التصدير -->
+    <div class="export-button">
+      <button onclick="exportReport()">
+        <img src="/icon/savew.png" alt=""> تصدير التقرير
+      </button>
+    </div>
+  </div>
+
+  <script src="export.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title data-ar="نظام الشكاوى" data-en="Complaint System">نظام الشكاوى</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- خط تاجوال -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <!-- أيقونات Remix -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="details.css">
+</head>  
+<body>
+  <!-- رأس الصفحة -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="Hospital Logo" class="header-logo">
+          <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="back-button">
+    <a href="#" onclick="goBack()"><br><br>
+      <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+      <span data-ar="رجوع" data-en="Back">رجوع</span>
+    </a><br>
+  </div>
+
+  <br><br>
+
+  <!-- Card -->
+  <div class="complaint-card">
+    <!-- Header -->
+    <div class="complaint-header">
+      <div>
+        <div class="complaint-title" data-ar="تفاصيل الشكوى رقم 12456" data-en="Complaint Details No. 12456">تفاصيل الشكوى رقم 12456</div>
+        <div class="complaint-date" data-ar="02 يوليو 2024 - الساعة 01:30 صباحاً" data-en="02 July 2024 - 01:30 AM">02 يوليو 2024 - الساعة 01:30 صباحاً</div>
+      </div>
+      <span class="complaint-status" data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</span>
+    </div>
+
+    <!-- بيانات مقدم الشكوى -->
+    <div class="section">
+      <div class="section-title" data-ar="بيانات مقدم الشكوى" data-en="Complainant Details">بيانات مقدم الشكوى</div>
+      <div class="info-grid">
+        <div>
+          <div class="info-label" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</div>
+          <div class="info-value" data-ar="أحمد محمد" data-en="Ahmed Mohammed">أحمد محمد</div>
+        </div>
+        <div>
+          <div class="info-label" data-ar="رقم الهوية / الإقامة" data-en="ID/Iqama Number">رقم الهوية / الإقامة</div>
+          <div class="info-value">1023456789</div>
+        </div>
+        <div>
+          <div class="info-label" data-ar="رقم الملف الطبي" data-en="Medical File Number">رقم الملف الطبي</div>
+          <div class="info-value">124543</div>
+        </div>
+        <div>
+          <div class="info-label" data-ar="رقم الجوال" data-en="Mobile Number">رقم الجوال</div>
+          <div class="info-value">0551234567</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- تفاصيل الشكوى -->
+    <div class="section">
+      <div class="section-title" data-ar="تفاصيل الشكوى" data-en="Complaint Details">تفاصيل الشكوى</div>
+      <div class="info-grid">
+        <div>
+          <div class="info-label" data-ar="القسم المرتبط" data-en="Associated Department">القسم المرتبط</div>
+          <div class="info-value" data-ar="الطواري" data-en="Emergency">الطواري</div>
+        </div>
+        <div>
+          <div class="info-label" data-ar="تاريخ الزيارة" data-en="Visit Date">تاريخ الزيارة</div>
+          <div class="info-value">01 يوليو 2024</div>
+        </div>
+        <div>
+          <div class="info-label" data-ar="نوع الشكوى الرئيسي" data-en="Main Complaint Type">نوع الشكوى الرئيسي</div>
+          <div class="info-value" data-ar="الخدمات الطبية والعلاجية" data-en="Medical and Therapeutic Services">الخدمات الطبية والعلاجية</div>
+        </div>
+        <div>
+          <div class="info-label" data-ar="الشكوى الفرعية" data-en="Subcategory">الشكوى الفرعية</div>
+          <div class="info-value" data-ar="تأخير في تقديم العلاج" data-en="Delay in Treatment">تأخير في تقديم العلاج</div>
+        </div>
+      </div>
+      <div class="details-box" data-ar="تم حضوري في الموعد المحدد ولكن لم يتم استقبالي من قبل الطبيب إلا بعد ساعة ونصف من الانتظار."
+           data-en="I arrived on time, but I was not seen by the doctor until an hour and a half later.">
+        تم حضوري في الموعد المحدد ولكن لم يتم استقبالي من قبل الطبيب إلا بعد ساعة ونصف من الانتظار.
+      </div>
+    </div>
+
+    <!-- المرفقات -->
+    <div class="section">
+      <div class="section-title" data-ar="المرفقات" data-en="Attachments">المرفقات</div>
+      <div class="attachment-box">
+        <div class="attachment-file">
+          <i class="ri-attachment-2"></i>
+          <span>تقرير_طبي.pdf</span>
+        </div>
+        <div class="attachment-actions">
+          <button onclick="previewAttachment()">
+            <i class="ri-eye-line"></i>
+            <span data-ar="معاينة" data-en="Preview">معاينة</span>
+          </button>
+          <button onclick="downloadFile()">
+            <i class="ri-download-2-line"></i>
+            <span data-ar="تحميل" data-en="Download">تحميل</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- الرد على الشكوى -->
+    <div class="section">
+      <div class="section-title" data-ar="الرد على الشكوى" data-en="Response to Complaint">الرد على الشكوى</div>
+      <div class="reply-box">
+        <div class="reply-header">
+          <span class="reply-from" data-ar="إدارة تجربة المريض" data-en="Patient Experience Department">إدارة تجربة المريض</span>
+          <span class="reply-date" data-ar="03 يوليو 2024 - 10:15 صباحاً" data-en="03 July 2024 - 10:15 AM">03 يوليو 2024 - 10:15 صباحاً</span>
+        </div>
+        <div class="reply-text"
+             data-ar="تم التواصل مع الفريق المعني. وتم تبرير التأخير وتقديم الخدمة فوراً. نشكركم على ملاحظتكم."
+             data-en="The concerned team was contacted. The delay was justified, and the service was provided immediately. Thank you for your feedback.">
+          تم التواصل مع الفريق المعني. وتم تبرير التأخير وتقديم الخدمة فوراً. نشكركم على ملاحظتكم.
+        </div>
+        <span class="reply-status" data-ar="تم الرد" data-en="Responded">تم الرد</span>
+      </div>
+    </div>
+
+    <!-- أزرار أسفل الصفحة -->
+    <div class="footer-actions">
+      <a href="/general complaints/general-complaints.html" class="back-link">
+        <i class="ri-arrow-right-s-line"></i>
+        <span data-ar="العودة لقائمة الشكاوى" data-en="Back to Complaints List">العودة لقائمة الشكاوى</span>
+      </a>
+      <div class="left-actions">
+        <button class="reopen-btn" onclick="reopenComplaint()">
+          <i class="ri-refresh-line"></i>
+          <span data-ar="إعادة فتح الشكوى" data-en="Reopen Complaint">إعادة فتح الشكوى</span>
+        </button>
+        <button class="print-btn" onclick="window.print()">
+          <i class="ri-printer-line"></i>
+          <span data-ar="طباعة الشكوى" data-en="Print Complaint">طباعة الشكوى</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="details.js"></script>
+</body>
+</html>

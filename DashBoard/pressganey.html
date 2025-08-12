@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+     <link rel="stylesheet" href="pressganey.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Inter, Tajawal, and Merriweather -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <!-- Chart.js Datalabels Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+</head>
+<body class="flex h-screen overflow-hidden lang-ar">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Placeholder for hospital-logo.png -->   
+            <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+            <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+
+            <button id="langToggle" class="lang-toggle-btn">
+                <!-- Placeholder for lang.png -->
+                <img src="/icon/lang.png" alt="language" class="lang-icon" />
+                <span id="langText">العربية | English</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside>
+        <ul class="sidebar-menu">
+            <li><a href="/login/home.html" class="menu-link" data-ar="الصفحة الرئيسية" data-en="Home Page">الصفحة الرئيسية</a></li>
+            <li><a href="overview.html" class="menu-link" data-ar="نظرة عامة" data-en="Overview">نظرة عامة</a></li>
+            <li><a href="report-937.html" class="menu-link" data-ar="مؤشر بلاغات 937" data-en="937 Report Index">مؤشر بلاغات 937</a></li> <!-- Active link changed -->
+            <li><a href="misconduct.html" class="menu-link" data-ar="بلاغات سوء التعامل" data-en="Misconduct Reports">بلاغات سوء التعامل</a></li>
+            <li><a href="pressganey.html" class="menu-link active" data-ar="مؤشر بريسيبي" data-en="Press Ganey Index">مؤشر بريسيبي</a></li>
+            <li><a href="inperson-complaints.html" class="menu-link" data-ar="مؤشر الشكاوى الحضورية" data-en="In-person Complaints">مؤشر الشكاوى الحضورية</a></li>
+            <li><a href="secret-visitor.html" class="menu-link" data-ar="ملاحظات الزائر السري" data-en="Secret Visitor Notes">ملاحظات الزائر السري</a></li>
+            <li><a href="general-requests.html" class="menu-link" data-ar="مؤشر الطلبات العامة" data-en="General Requests Index">مؤشر الطلبات العامة</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col p-8 overflow-auto" style="margin-right: 250px; margin-top: 75px;">
+        <!-- Top Cards Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Card 1: Total Departments Survey Completion -->
+            <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center text-center">
+                <p class="text-sm text-gray-500 mb-2" data-ar="إجمالي الأقسام التي بلغت نسبة تنفيذ الاستبيان" data-en="Total departments that reached survey completion rate">إجمالي الأقسام التي بلغت نسبة تنفيذ الاستبيان</p>
+                <p class="text-4xl font-bold text-blue-600" id="totalDepartmentsSurvey">8</p>
+            </div>
+            <!-- Card 2: Average Hospital General Satisfaction Score -->
+            <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center text-center">
+                <p class="text-sm text-gray-500 mb-2" data-ar="متوسط نتيجة الرضا العام للمستشفى" data-en="Average hospital general satisfaction score">متوسط نتيجة الرضا العام للمستشفى</p>
+                <p class="text-4xl font-bold text-green-600" id="averageSatisfactionScore">84.3</p>
+            </div>
+        </div>
+
+        <!-- Filters Section (Dropdowns) -->
+        <div class="flex flex-wrap gap-4 mb-8">
+            <!-- Choose Quarter Dropdown -->
+            <div class="custom-select-wrapper flex-1 min-w-[150px]">
+                <div class="custom-select" id="quarterSelect">
+                    <span id="selectedQuarter" data-ar="اختر الربع" data-en="Choose Quarter">اختر الربع</span>
+                    <i class="fas fa-chevron-down text-gray-500"></i>
+                </div>
+                <div class="custom-select-options" id="quarterOptions">
+                    <div class="custom-select-option" data-value="q1" data-ar="الربع الأول" data-en="Q1">الربع الأول</div>
+                    <div class="custom-select-option" data-value="q2" data-ar="الربع الثاني" data-en="Q2">الربع الثاني</div>
+                    <div class="custom-select-option" data-value="q3" data-ar="الربع الثالث" data-en="Q3">الربع الثالث</div>
+                    <div class="custom-select-option" data-value="q4" data-ar="الربع الرابع" data-en="Q4">الربع الرابع</div>
+                </div>
+            </div>
+            <!-- Choose Month Dropdown -->
+            <div class="custom-select-wrapper flex-1 min-w-[150px]">
+                <div class="custom-select" id="monthSelect">
+                    <span id="selectedMonth" data-ar="اختر الشهر" data-en="Choose Month">اختر الشهر</span>
+                    <i class="fas fa-chevron-down text-gray-500"></i>
+                </div>
+                <div class="custom-select-options" id="monthOptions">
+                    <div class="custom-select-option" data-value="jan" data-ar="يناير" data-en="January">يناير</div>
+                    <div class="custom-select-option" data-value="feb" data-ar="فبراير" data-en="February">فبراير</div>
+                    <div class="custom-select-option" data-value="mar" data-ar="مارس" data-en="March">مارس</div>
+                    <!-- Add more months as needed -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Department Donut Charts Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Home Medicine -->
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-ar="الطب المنزلي" data-en="Home Medicine">الطب المنزلي</h3>
+                <div class="relative w-36 h-36">
+                    <canvas id="homeMedicineChart"></canvas>
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-green-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                    </div>
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-red-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Radiology -->
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-ar="الأشعة" data-en="Radiology">الأشعة</h3>
+                <div class="relative w-36 h-36">
+                    <canvas id="radiologyChart"></canvas>
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-green-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                    </div>
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-red-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Outpatient Clinics -->
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-ar="العيادات الخارجية" data-en="Outpatient Clinics">العيادات الخارجية</h3>
+                <div class="relative w-36 h-36">
+                    <canvas id="outpatientChart"></canvas>
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-green-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                    </div>
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-red-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Dentistry -->
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-ar="الأسنان" data-en="Dentistry">الأسنان</h3>
+                <div class="relative w-36 h-36">
+                    <canvas id="dentistryChart"></canvas>
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-green-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                    </div>
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-red-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Emergency -->
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-ar="الطوارئ" data-en="Emergency">الطوارئ</h3>
+                <div class="relative w-36 h-36">
+                    <canvas id="emergencyChart"></canvas>
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-green-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                    </div>
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-red-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Inpatient Departments -->
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-ar="أقسام التنويم" data-en="Inpatient Departments">أقسام التنويم</h3>
+                <div class="relative w-36 h-36">
+                    <canvas id="inpatientChart"></canvas>
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-green-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                    </div>
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-red-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Mortality -->
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-ar="الوفيات" data-en="Mortality">الوفيات</h3>
+                <div class="relative w-36 h-36">
+                    <canvas id="mortalityChart"></canvas>
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-green-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                    </div>
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-red-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Blood Bank -->
+            <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4" data-ar="بنك الدم" data-en="Blood Bank">بنك الدم</h3>
+                <div class="relative w-36 h-36">
+                    <canvas id="bloodBankChart"></canvas>
+                </div>
+                <div class="flex justify-center items-center mt-4">
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-green-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                    </div>
+                    <div class="chart-donut-legend-item">
+                        <span class="chart-donut-legend-color bg-red-500"></span>
+                        <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overall Hospital Satisfaction Chart -->
+        <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center" data-ar="نسبة الرضا العام للمستشفى" data-en="Overall Hospital Satisfaction Rate">نسبة الرضا العام للمستشفى</h2>
+            <div class="relative w-64 h-64">
+                <canvas id="overallSatisfactionChart"></canvas>
+            </div>
+            <div class="flex justify-center items-center mt-4">
+                <div class="chart-donut-legend-item">
+                    <span class="chart-donut-legend-color bg-green-500"></span>
+                    <span class="text-gray-700 text-sm" data-ar="راضي" data-en="Satisfied">راضي</span>
+                </div>
+                <div class="chart-donut-legend-item">
+                    <span class="chart-donut-legend-color bg-red-500"></span>
+                    <span class="text-gray-700 text-sm" data-ar="غير راضي" data-en="Not Satisfied">غير راضي</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons for Export Report -->
+        <div class="flex justify-center mt-8">
+            <button id="exportReportBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full shadow-lg flex items-center">
+                <i class="fas fa-download ml-2"></i>
+                <span data-ar="تصدير التقرير" data-en="Export Report">تصدير التقرير</span>
+            </button>
+        </div>
+    </div>
+
+
+  <script src="pressganey.js"></script>
+</body>
+</html>

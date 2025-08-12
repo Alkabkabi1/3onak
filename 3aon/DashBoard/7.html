@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar="الصفحة الرئيسية - الشكاوى" data-en="Home Page - Complaints">الصفحة الرئيسية - الشكاوى</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+    <link rel="stylesheet" href="7.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-title" data-ar="عَــــــون" data-en="AOUN">عَــــــون</div>
+            <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+            <button id="langToggle" class="lang-toggle-btn">
+                <img src="/icon/lang.png" alt="language" class="lang-icon" />
+                <span id="langText">العربية | English</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/login/home.html"><i class="fas fa-eye"></i> <span data-ar="الصفحة الرئيسية" data-en="Home Page">الصفحة الرئيسية</span></a></li>
+                    <li><a href="/DashBoard/1.html"><i class="fas fa-eye"></i> <span data-ar="نظرة عامة" data-en="Overview">نظرة عامة</span></a></li>
+                    <li><a href="/DashBoard/2.html"><i class="fas fa-phone-alt"></i> <span data-ar="مؤشر بلاغات 937" data-en="937 Reports Indicator">مؤشر بلاغات 937</span></a></li>
+                    <li><a href="#"><i class="fas fa-exclamation-triangle"></i> <span data-ar="بلاغات سوء التعامل" data-en="Misconduct Reports">بلاغات سوء التعامل</span></a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> <span data-ar="مؤشر بريستيجي" data-en="Prestige Indicator">مؤشر بريستيجي</span></a></li>
+                    <li><a href="#"><i class="fas fa-comments"></i> <span data-ar="مؤشر الشكاوى الحضوريه" data-en="On-site Complaints Indicator">مؤشر الشكاوى الحضوريه</span></a></li>
+                    <li><a href="/DashBoard/6.html"><i class="fas fa-user-friends"></i> <span data-ar="ملاحظات الزائر السريري" data-en="Clinical Visitor Notes">ملاحظات الزائر السريري</span></a></li>
+                    <li><a href="#" class="active"><i class="fas fa-clipboard-list"></i> <span data-ar="مؤشر الطلبات العامة" data-en="General Requests Indicator">مؤشر الطلبات العامة</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+
+            <section class="chart-section-general-requests fade-in-section">
+                <h2 class="section-title" data-ar="الطلبات العامة المنفذة وغير المنفذة" data-en="Executed and Non-Executed General Requests">الطلبات العامة المنفذة وغير المنفذة</h2>
+
+                <div class="legend-container-requests">
+                    <div class="legend-item">
+                   
+                    </div>
+                    <div class="legend-item">
+                
+                    </div>
+                </div>
+
+                <div class="chart-wrapper-requests">
+                    <canvas id="generalRequestsChart"></canvas>
+                </div>
+
+                <div class="export-button-container">
+                    <button class="export-button">
+                        <i class="fas fa-download"></i>
+                        <span data-ar="تصدير التقرير" data-en="Export Report">تصدير التقرير</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="7.js"></script>
+</body>
+
+</html>

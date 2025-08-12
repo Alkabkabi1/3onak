@@ -1,0 +1,124 @@
+/* Default body styles, will be overridden by lang-ar/lang-en */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Light gray background */
+}
+
+/* User-provided CSS for language-specific body styles */
+body.lang-ar {
+    font-family: 'Tajawal', sans-serif;
+    text-align: right; /* Adjusted for RTL layout */
+}
+
+body.lang-en {
+    font-family: 'Merriweather', serif;
+    text-align: left; /* Adjusted for LTR layout */
+}
+
+/* User-provided CSS for header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: white;
+    height: 75px; /* Explicitly set height for stability */
+    padding: 0 30px; /* Remove vertical padding, height handles it */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex; /* Use flex to align content vertically */
+    align-items: center; /* Center content vertically */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ensure content fills the header width */
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e88e5;
+}
+
+.header-logo {
+    height: 45px;
+}
+
+.lang-toggle-btn {
+    background-color: #3686cbbc; /* أزرق */
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lang-toggle-btn:hover {
+    background-color: #1565c0; /* أزرق غامق عند الهوفر */
+}
+
+.lang-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* User-provided CSS for aside (sidebar) */
+aside {
+    width: 250px;
+    min-width: 250px; /* Ensure it maintains width */
+    background-color: white;
+    height: 100vh;
+    border-left: 1px solid #e0e0e0; /* Original border-left */
+    padding: 20px;
+    position: fixed; /* Make sidebar fixed */
+    top: 0;
+    right: 0; /* Position on the right for RTL */
+    padding-top: 75px; /* Adjust to fixed header height */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add subtle shadow */
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside li {
+    padding: 12px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    color: #333; /* Default text color */
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+aside li a {
+    display: block; /* Make the entire li clickable via the anchor */
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent li */
+}
+
+aside li.active {
+    background-color: #e6f0ff;
+    color: #007bff; /* Active color */
+}
+
+aside li:hover {
+    background-color: #e6f0ff; /* Keep background change */
+    color: #DC2626; /* Changed to Tailwind red-600 for a very noticeable hover effect on text */
+}
+
+/* Specific styles for horizontal bar charts */
+.chart-container {
+    background-color: white;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-md */
+    padding: 1.5rem; /* p-6 */
+}

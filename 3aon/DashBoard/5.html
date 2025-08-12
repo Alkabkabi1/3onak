@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dashboard - Daily Communication Indicator</title>
+    <link rel="stylesheet" href="5.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#"><i class="fas fa-eye"></i> نظرة عامة</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> مؤشر بالرضا 937</a></li>
+                    <li><a href="#"><i class="fas fa-exclamation-triangle"></i> بلاغات سوء التعامل</a></li>
+                    <li><a href="#"><i class="fas fa-chart-pie"></i> مؤشر بريستيجي</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-comments"></i> مؤشر الشكاوى الحضوريه</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> ملاحظات الزائر السريري</a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice"></i> مؤشر الطلبات العامة</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <span class="language-toggle">English | عربي</span>
+            </header>
+
+            <section class="chart-section">
+                <h2 class="section-title">مؤشر التواصل اليومي لوحدة الدعم والمساعدة مع الأقسام</h2>
+
+                <div class="legend-container">
+                    <div class="legend-item">
+                        <span class="legend-color red"></span> موعد
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color blue"></span> ملاحظة طلب
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color purple"></span> لم يتم الرد
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color green"></span> تشرح الحالة
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color orange"></span> دواء
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color yellow"></span> سوء تعامل
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color brown"></span> تقرير طبيب
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color light-grey"></span> زيارة مرضية
+                    </div>
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="dailyCommunicationChart"></canvas>
+                </div>
+
+                <div class="export-button-container">
+                    <button class="export-button">
+                        <i class="fas fa-download"></i> تصدير التقرير
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="5.js"></script>
+</body>
+</html>

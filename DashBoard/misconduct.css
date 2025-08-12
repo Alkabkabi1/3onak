@@ -1,0 +1,255 @@
+        /* Default body styles, will be overridden by lang-ar/lang-en */
+        body {
+          direction: rtl;
+            background-color: #f0f2f5; /* Light gray background */
+        }
+
+        /* User-provided CSS for language-specific body styles */
+        body.lang-ar {
+            font-family: 'Tajawal', sans-serif;
+            text-align: right; /* Adjusted for RTL layout */
+        }
+
+        body.lang-en {
+            font-family: serif;
+            text-align: left; /* Adjusted for LTR layout */
+        }
+
+        /* User-provided CSS for header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: white;
+            height: 75px; /* Explicitly set height for stability */
+            padding: 0 30px; /* Remove vertical padding, height handles it */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex; /* Use flex to align content vertically */
+            align-items: center; /* Center content vertically */
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; /* Ensure content fills the header width */
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e88e5;
+        }
+
+        .header-logo {
+            height: 45px;
+        }
+
+        .lang-toggle-btn {
+            background-color: #3686cbbc; /* أزرق */
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .lang-toggle-btn:hover {
+            background-color: #1565c0; /* أزرق غامق عند الهوفر */
+        }
+
+        .lang-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* User-provided CSS for aside (sidebar) */
+        aside {
+            width: 250px;
+            min-width: 250px; /* Ensure it maintains width */
+            background-color: white;
+            height: 100vh;
+            border-left: 1px solid #e0e0e0; /* Original border-left */
+            padding: 20px;
+            position: fixed; /* Make sidebar fixed */
+            top: 0;
+            right: 0; /* Position on the right for RTL */
+            padding-top: 75px; /* Adjust to fixed header height */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add subtle shadow */
+        }
+
+        aside ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        aside li {
+            padding: 12px 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            color: #333; /* Default text color */
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        aside li a {
+            display: block; /* Make the entire li clickable via the anchor */
+            text-decoration: none;
+            color: inherit; /* Inherit color from parent li */
+        }
+
+        aside li.active {
+            background-color: #e6f0ff;
+            color: #007bff; /* Active color */
+        }
+        
+        aside li:hover {
+            background-color: #e6f0ff; /* Keep background change */
+            color: #DC2626; /* Changed to Tailwind red-600 for a very noticeable hover effect on text */
+        }
+
+
+
+        /* Custom styles for the dropdown to match the image */
+        .custom-select-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%; /* Full width as in image */
+            max-width: 200px; /* Limit width */
+        }
+
+        .custom-select {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .custom-select:hover {
+            border-color: #a0aec0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .custom-select-options {
+            position: absolute;
+            top: 100%; /* Position below the select box */
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 500; /* Above other content */
+            max-height: 200px;
+            overflow-y: auto;
+            display: none; /* Hidden by default */
+        }
+
+        .custom-select-options.open {
+            display: block;
+        }
+
+        .custom-select-option {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .custom-select-option:hover {
+            background-color: #f0f2f5;
+        }
+
+        /* Specific styles for horizontal bar charts */
+        .chart-container {
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-md */
+            padding: 1.5rem; /* p-6 */
+        }
+
+        .table-container {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-container th, .table-container td {
+            padding: 12px 15px;
+            text-align: right; /* RTL alignment */
+            border-bottom: 1px solid #e2e8f0; /* gray-200 */
+        }
+
+        .table-container th {
+            background-color: #f8f8f8;
+            font-weight: 600;
+            color: #4a5568; /* gray-700 */
+        }
+
+        .table-container tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 9999px; /* full rounded */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+        }
+
+        .status-badge.green {
+            background-color: #d1fae5; /* green-100 */
+            color: #059669; /* green-700 */
+        }
+
+        .status-badge.yellow {
+            background-color: #fef3c7; /* yellow-100 */
+            color: #d97706; /* yellow-700 */
+        }
+
+        .status-badge.red {
+            background-color: #fee2e2; /* red-100 */
+            color: #dc2626; /* red-700 */
+        }
+
+        /* Flatpickr specific styles for inputs */
+        .flatpickr-input {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #333;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            width: 100%;
+            max-width: 200px; /* Match dropdown width */
+        }
+        .flatpickr-input:focus {
+            outline: none;
+            border-color: #a0aec0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+  

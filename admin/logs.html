@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سجل الأنشطة - عونك</title>
+  <!-- خط عربي: Tajawal -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- خط إنجليزي: Merriweather (serif) -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome للأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="logs.css">
+</head>
+
+<body>  
+  <!-- زر العودة -->
+  <div class="back-button">
+    <a href="#" onclick="goBack()">
+      <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+      <span data-ar="عودة" data-en="Back">عودة</span>
+    </a>
+  </div>
+
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- المحتوى الرئيسي -->
+  <main class="main-content">
+    <!-- عنوان الصفحة -->
+    <div class="page-header">
+      <div class="page-title">
+        <i class="fas fa-history"></i>
+        <h1 data-ar="سجل الأنشطة" data-en="Activity Logs">سجل الأنشطة</h1>
+      </div>
+      <div class="page-subtitle">
+        <p data-ar="تتبع جميع الأنشطة والعمليات في النظام" data-en="Track all activities and operations in the system">تتبع جميع الأنشطة والعمليات في النظام</p>
+      </div>
+    </div>
+
+    <!-- إحصائيات سريعة -->
+    <div class="stats-cards">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-file-alt"></i>
+        </div>
+        <div class="stat-info">
+          <h3 id="totalLogs">0</h3>
+          <p data-ar="إجمالي السجلات" data-en="Total Logs">إجمالي السجلات</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-calendar-day"></i>
+        </div>
+        <div class="stat-info">
+          <h3 id="todayLogs">0</h3>
+          <p data-ar="سجلات اليوم" data-en="Today's Logs">سجلات اليوم</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- الفلاتر والبحث -->
+    <div class="filters-container">
+      <div class="filters-header">
+        <h3 data-ar="تصفية السجلات" data-en="Filter Logs">تصفية السجلات</h3>
+        <button class="collapse-btn" onclick="toggleFilters()">
+          <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+      
+      <div class="filters-content">
+        <div class="filter-row">
+          <div class="filter-group">
+            <label data-ar="من تاريخ" data-en="From Date">من تاريخ</label>
+            <input type="date" id="dateFrom" class="filter-input">
+          </div>
+          <div class="filter-group">
+            <label data-ar="إلى تاريخ" data-en="To Date">إلى تاريخ</label>
+            <input type="date" id="dateTo" class="filter-input">
+          </div>
+          <div class="filter-group">
+            <label data-ar="نوع النشاط" data-en="Activity Type">نوع النشاط</label>
+            <select id="activityType" class="filter-input">
+              <option value="" data-ar="جميع الأنشطة" data-en="All Activities">جميع الأنشطة</option>
+              <option value="login" data-ar="تسجيل دخول" data-en="Login">تسجيل دخول</option>
+              <option value="logout" data-ar="تسجيل خروج" data-en="Logout">تسجيل خروج</option>
+              <option value="complaint_submit" data-ar="تقديم شكوى" data-en="Submit Complaint">تقديم شكوى</option>
+              <option value="complaint_update" data-ar="تحديث شكوى" data-en="Update Complaint">تحديث شكوى</option>
+              <option value="complaint_view" data-ar="عرض شكوى" data-en="View Complaint">عرض شكوى</option>
+              <option value="export" data-ar="تصدير تقرير" data-en="Export Report">تصدير تقرير</option>
+              <option value="user_management" data-ar="إدارة المستخدمين" data-en="User Management">إدارة المستخدمين</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label data-ar="المستخدم" data-en="User">المستخدم</label>
+            <input type="text" id="userFilter" class="filter-input" 
+                   placeholder="اسم المستخدم أو المعرف" 
+                   data-ar-placeholder="اسم المستخدم أو المعرف"
+                   data-en-placeholder="Username or ID">
+          </div>
+        </div>
+        
+        <div class="filter-actions">
+          <button class="apply-filter-btn" onclick="applyFilters()">
+            <i class="fas fa-filter"></i>
+            <span data-ar="تطبيق الفلتر" data-en="Apply Filter">تطبيق الفلتر</span>
+          </button>
+          <button class="clear-filter-btn" onclick="clearFilters()">
+            <i class="fas fa-times"></i>
+            <span data-ar="مسح الفلاتر" data-en="Clear Filters">مسح الفلاتر</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- البحث والإجراءات -->
+    <div class="search-actions-bar">
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" class="search-input" 
+               placeholder="بحث في السجلات..."
+               data-ar-placeholder="بحث في السجلات..."
+               data-en-placeholder="Search logs...">
+      </div>
+      
+      <div class="action-buttons">
+        <button class="action-btn export-btn" onclick="exportToPDF()">
+          <i class="fas fa-file-pdf"></i>
+          <span data-ar="تصدير PDF" data-en="Export PDF">تصدير PDF</span>
+        </button>
+        <button class="action-btn export-btn" onclick="exportToExcel()">
+          <i class="fas fa-file-excel"></i>
+          <span data-ar="تصدير Excel" data-en="Export Excel">تصدير Excel</span>
+        </button>
+        <button class="action-btn danger-btn" onclick="deleteLogs()">
+          <i class="fas fa-trash"></i>
+          <span data-ar="حذف السجلات القديمة" data-en="Delete Old Logs">حذف السجلات القديمة</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- جدول السجلات -->
+    <div class="table-container">
+      <div class="table-header">
+        <h3 data-ar="سجل الأنشطة" data-en="Activity Logs">سجل الأنشطة</h3>
+        <div class="table-info">
+          <span id="logsCount" data-ar="عرض 0-0 من 0 سجل" data-en="Showing 0-0 of 0 logs">عرض 0-0 من 0 سجل</span>
+        </div>
+      </div>
+      
+      <div class="table-wrapper">
+        <table class="logs-table">
+          <thead>
+            <tr>
+              <th data-ar="#" data-en="#">#</th>
+              <th data-ar="المستخدم" data-en="User">المستخدم</th>
+              <th data-ar="نوع النشاط" data-en="Activity Type">نوع النشاط</th>
+              <th data-ar="الوصف" data-en="Description">الوصف</th>
+              <th data-ar="الوقت والتاريخ" data-en="Date & Time">الوقت والتاريخ</th>
+            </tr>
+          </thead>
+          <tbody id="logsTableBody">
+            <!-- سيتم تعبئة السجلات ديناميكياً -->
+            <tr class="loading-row">
+              <td colspan="5">
+                <div class="loading-spinner">
+                  <i class="fas fa-spinner fa-spin"></i>
+                  <span data-ar="جاري تحميل السجلات..." data-en="Loading logs...">جاري تحميل السجلات...</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- الترقيم -->
+    <div class="pagination-container">
+      <div class="pagination-info">
+        <span id="paginationInfo" data-ar="عرض 1-10 من 50 سجل" data-en="Showing 1-10 of 50 logs">عرض 1-10 من 50 سجل</span>
+      </div>
+      <div class="pagination-controls">
+        <button class="pagination-btn" onclick="previousPage()" disabled>
+          <i class="fas fa-chevron-right"></i>
+          <span data-ar="السابق" data-en="Previous">السابق</span>
+        </button>
+        <div class="page-numbers" id="pageNumbers">
+          <!-- أرقام الصفحات ستُولد ديناميكياً -->
+        </div>
+        <button class="pagination-btn" onclick="nextPage()">
+          <span data-ar="التالي" data-en="Next">التالي</span>
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="logs.js"></script>
+</body>
+</html>

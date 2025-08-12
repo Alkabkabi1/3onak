@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dashboard</title>
+    <link rel="stylesheet" href="4.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-hospital-alt"></i> Hospital
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-eye"></i> نظرة عامة</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> مؤشر بالرضا 937</a></li>
+                    <li><a href="#"><i class="fas fa-exclamation-triangle"></i> بلاغات سوء التعامل</a></li>
+                    <li><a href="#"><i class="fas fa-chart-pie"></i> مؤشر بريستيجي</a></li>
+                    <li><a href="#"><i class="fas fa-comments"></i> مؤشر الشكاوى الحضوريه</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> ملاحظات الفراغ السريري</a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice"></i> مؤشر الطلبات العامة</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <span class="language-toggle">English | عربي</span>
+            </header>
+
+            <section class="top-filters">
+                <div class="filter-card green-bg">
+                    <p>مسام في النطاق الاخضر في</p>
+                    <h3>طوارئ المستشفى</h3>
+                </div>
+                <div class="filter-card red-bg">
+                    <p>مسام في النطاق الاخضر في</p>
+                    <h3>طوارئ المستشفى</h3>
+                </div>
+                <div class="summary-card">
+                    <p>إجمالي الأقسام اللي بلغت نسبة تنفيذ الاستبيان</p>
+                    <span class="big-number">8</span>
+                </div>
+            </section>
+
+            <section class="data-filters">
+                <div class="dropdown">
+                    <label for="year-select">اختر السنة</label>
+                    <select id="year-select">
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+                <div class="dropdown">
+                    <label for="quarter-select">اختر الربع</label>
+                    <select id="quarter-select">
+                        <option value="q1">الربع الأول</option>
+                        <option value="q2">الربع الثاني</option>
+                        <option value="q3">الربع الثالث</option>
+                        <option value="q4">الربع الرابع</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="dashboard-grid">
+                <div class="grid-item">
+                    <h4>الطب المنزل</h4>
+                    <div class="chart-container">
+                        <canvas id="homeCareChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <h4>الأشعة</h4>
+                    <div class="chart-container">
+                        <canvas id="radiologyChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+                <div class="grid-item full-width-chart">
+                    <h4>متوسط نتيجة الرضا العام للمستشفى</h4>
+                    <div class="chart-container-large">
+                        <canvas id="overallSatisfactionChart"></canvas>
+                        <div class="chart-center-text">84.3</div>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h4>العيادات الخارجية</h4>
+                    <div class="chart-container">
+                        <canvas id="outpatientChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <h4>الاسنان</h4>
+                    <div class="chart-container">
+                        <canvas id="dentalChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <h4>نسبة الرضا العام للمستشفى</h4>
+                    <div class="chart-container">
+                        <canvas id="hospitalSatisfactionChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <h4>الطوارئ</h4>
+                    <div class="chart-container">
+                        <canvas id="emergencyChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <h4>أقسام النوم</h4>
+                    <div class="chart-container">
+                        <canvas id="sleepSectionsChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+                <div class="grid-item button-export-container">
+                    <button class="export-button">
+                        <i class="fas fa-download"></i> تصدير التقرير
+                    </button>
+                </div>
+
+                <div class="grid-item">
+                    <h4>الوفيات</h4>
+                    <div class="chart-container">
+                        <canvas id="fatalitiesChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <h4>بنك الدم</h4>
+                    <div class="chart-container">
+                        <canvas id="bloodBankChart"></canvas>
+                    </div>
+                    <div class="chart-labels">
+                        <span class="label green">راضي</span>
+                        <span class="label red">غير راضي</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <a href="#">
+                    <i class="fas fa-chevron-down"></i> مزيد من التفاصيل
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <script src="4.js"></script>
+</body>
+</html>

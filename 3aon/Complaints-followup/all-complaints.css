@@ -1,0 +1,518 @@
+/* General Styling */
+:root {
+    --primary-color: #007bff; /* Blue for buttons, links */
+    --secondary-color: #6c757d; /* Grey for text */
+    --background-color: #f8f9fa; /* Light grey background */
+    --card-background: #ffffff; /* White for cards/sections */
+    --border-color: #e9ecef; /* Light border */
+    --text-color: #343a40; /* Dark grey text */
+    --header-bg: #ffffff;
+
+    /* Status Tags */
+    --status-new: #ffc107; /* Orange */
+    --status-under-review: #ffc107; /* Orange (same as new for this design) */
+    --status-closed: #28a745; /* Green */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+  margin: 0;
+}
+
+.fixed-header {
+  direction: rtl; /* يبقى دائمًا عربي مثلاً */
+  background: white;
+  padding: 10px 30px;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.page-content {
+  padding: 20px 30px;
+  transition: direction 0.3s ease;
+}
+
+
+
+body.lang-ar .page-content {
+ font-family: 'Tajawal', sans-serif !important;
+    direction: rtl;
+  text-align: right;
+}
+
+body.lang-en .page-content {
+  font-family: 'Merriweather', serif !important;
+    direction: ltr;
+  text-align: left;
+}
+
+
+body.lang-en table {
+  direction: ltr;
+  text-align: left;
+}
+
+body.lang-en table th,
+body.lang-en table td {
+  padding: 10px 15px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.details-link {
+  margin-inline-end: 10px; /* يترك مسافة بين الروابط */
+  color: #1565c0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+
+
+.lang-toggle-btn {
+  background-color: #3686cbbc; /* أزرق */
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lang-toggle-btn:hover {
+  background-color: #1565c0; /* أزرق غامق عند الهوفر */
+}
+
+.lang-icon {
+  width: 20px;
+  height: 20px;
+}
+
+
+
+
+.header {
+  background-color: white;
+  padding: 15px 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e88e5;
+}
+
+.header-logo {
+  height: 45px;
+}
+
+.icon-title {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+
+
+.system-title h1 {
+    font-size: 36px;
+    color: var(--primary-color);
+    font-weight: 700;
+    padding-left: 20px; /* Space from the right edge */
+}
+
+
+
+/* ***** MODIFIED PATIENT SUMMARY SECTION CSS START ***** */
+.patient-summary-new {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* ← بدّل من flex-end إلى flex-start */
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 30px;
+    direction: rtl; /* ← تأكيد أن اتجاه النص من اليمين لليسار */
+    text-align: right; /* ← يضمن أن النص داخل العناصر يكون بمحاذاة اليمين */
+}
+
+
+.info-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    /* Remove background and border from individual info-group to match image */
+}
+
+.info-group i {
+    font-size: 24px;
+    color: var(--secondary-color); /* Grey icon color as in screenshot */
+}
+
+.info-group .info-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-group .label {
+    font-size: 14px;
+    color: var(--secondary-color);
+    display: block;
+}
+
+.info-group .value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+/* ***** MODIFIED PATIENT SUMMARY SECTION CSS END ***** */
+
+
+/* Filters Section */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px 30px;
+    gap: 15px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.form-control {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--text-color);
+    background-color: var(--card-background);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.search-input-group {
+    display: flex;
+    flex: 2; /* Occupy more space */
+    min-width: 250px;
+}
+
+.search-input-group .form-control {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none; /* Remove border between input and button */
+}
+
+
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s, border-color 0.2s;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.btn-primary {
+    background-color: #2d80d8;
+    color: white;
+    border: 1px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Complaint List Table */
+.complaint-list {
+    padding: 20px 30px;
+    overflow-x: auto; /* Enable horizontal scrolling for small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-background);
+}
+
+table thead th {
+    background-color: var(--background-color);
+    padding: 12px 15px;
+    text-align: right;
+    font-size: 14px;
+    color: var(--secondary-color);
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+table tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.status-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+
+.status-new {
+    background: #dbeafe;
+  color: #1d4ed8; 
+}
+
+
+.status-under-review {
+      background: #fef3c7;
+  color: #b45309;
+}
+
+.status-closed {
+  background: #e0f7e0;  /* لون أخضر فاتح (تدرج مشابه للخلفية) */
+    color: #0c7208; 
+}
+
+.details-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: 10px;
+    white-space: nowrap; /* Prevent breaking link text */
+}
+
+.details-link:hover {
+    text-decoration: underline;
+}
+
+/* Pagination Footer */
+.pagination-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--card-background);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.export-results {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.export-results i {
+    font-size: 18px;
+}
+
+.pagination {
+    display: flex;
+    gap: 5px;
+}
+
+.pagination-btn {
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 35px; /* Ensure buttons have consistent width */
+    text-align: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.pagination-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.pagination-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 992px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-group {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .form-control, .search-input-group {
+        width: 100%;
+        min-width: unset;
+    }
+    .btn-primary {
+        width: 100%;
+        margin-top: 15px;
+    }
+    .search-input-group .form-control {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-left: 1px solid var(--border-color);
+    }
+    .search-btn {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    /* Updated for the new patient summary layout */
+    .patient-summary-new {
+        justify-content: flex-start; /* Align to the left/start in RTL when stacking */
+        gap: 20px; /* Reduce gap when wrapping */
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-end; /* Align content of each group to the right */
+    }
+    .info-group {
+        width: 100%; /* Make each info group take full width */
+        justify-content: flex-end; /* Align contents of info-group to the right */
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .hospital-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hospital-names {
+        text-align: center;
+    }
+    .system-title {
+        padding-left: 0;
+        margin-top: 10px;
+    }
+    .container {
+        border-radius: 0; /* Remove border-radius on smaller screens */
+    }
+    body {
+        padding: 0; /* Remove body padding on smaller screens */
+    }
+    .patient-summary-new, .filters, .complaint-list, .pagination-footer {
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hospital-names h1 {
+        font-size: 20px;
+    }
+    .system-title h1 {
+        font-size: 30px;
+    }
+    .info-group {
+        padding: 0; /* Remove padding from info-group as it's just a flex item now */
+    }
+    .form-control, .btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    table thead th, table tbody td {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    .status-tag {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+    .export-results, .pagination-btn {
+        font-size: 13px;
+    }
+    .pagination-btn {
+        padding: 6px 10px;
+        min-width: 30px;
+    }
+}
+
+
+.back-button-inline {
+  position: absolute;
+  left: 20px; /* لأنه RTL نستخدم right بدلاً من left */
+  top: 20;
+  height: 100%;
+  display: flex;
+  align-items: center;
+    transform: none; /* إزالة تحويل التوسيط */
+}
+
+.back-button-inline a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #4A5568;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  flex-direction: row-reverse; /* للحفاظ على اتجاه العناصر في RTL */
+  transition: all 0.3s ease;
+}
+
+
+.back-button-inline .back-icon {
+  width: 18px;
+  height: 18px;
+}

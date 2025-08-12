@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  background: #f9fbfd;
+  direction: rtl;
+  color: #333;
+  align-items: center;
+}
+
+body.lang-ar {
+  font-family: 'Tajawal', sans-serif !important;
+}
+
+body.lang-en {
+  font-family: 'Merriweather', serif !important;
+}
+
+
+
+.header {
+  background-color: white;
+  padding: 15px 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e88e5;
+}
+
+.header-logo {
+  height: 45px;
+}
+
+
+/* شبكة البطاقات (2 في كل صف) */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  padding: 40px;
+}
+
+/* تصميم البطاقة */
+
+
+
+.card.full-width {
+  grid-column: 1 / -1;       /* يغطي كل الأعمدة */
+  text-align: center;        /* يصطف النص في الوسط */
+  align-items: center;       /* يصطف المحتوى في الوسط داخل Flex */
+}
+
+
+.card.full-width img {
+  align-self: center;
+}
+
+.card.full-width .btn {
+  align-self: center;
+}
+
+
+
+
+
+
+
+.card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+  color: #222;
+}
+
+
+
+.card h3,
+.card p{
+  transition: color 0.3s ease;
+}
+
+.card img {
+  width: 50px;
+  margin-bottom: 15px;
+  transition: filter 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #172F4A, #3BAAE0);
+  color: #ffffff;
+}
+
+.card:hover h3,
+.card:hover p{
+  color: #ffffff;
+}
+
+.card:hover img{
+  filter: brightness(0) invert(1); /* يجعل الصورة بيضاء */
+}
+
+
+.card img {
+  width: 50px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #222;
+}
+
+.card p {
+  color: #666;
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+
+
+/* زر */
+.card .btn {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #1565c0;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.card .btn:hover {
+  background-color: #0d47a1;
+}
+
+
+
+.lang-toggle-btn {
+  background-color: #3686cbbc; /* أزرق */
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.lang-toggle-btn:hover {
+  background-color: #1565c0; /* أزرق غامق عند الهوفر */
+}
+
+.lang-icon {
+  width: 20px;
+  height: 20px;
+}
+

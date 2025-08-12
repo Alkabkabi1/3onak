@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشكاوى العامة</title>
+     <!-- خط عربي: Tajawal -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- خط إنجليزي: Merriweather (serif) -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="general-complaints.css">
+</head>  
+      <!-- رأس الصفحة -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+  <img src="/icon/lang.png" alt="language" class="lang-icon" />
+  <span id="langText">العربية | English</span>
+    </div>
+  </header>
+
+<body>
+  <div class="page-header">
+    <h2 class="page-title" data-ar="الشكاوى العامة" data-en="General Complaints">الشكاوى العامة</h2>
+
+<div class="back-button">
+      <a href="#" onclick="goBack()">
+        <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+        <span data-ar="عودة" data-en="Back">عودة</span>
+      </a>
+    </div>
+</div>
+
+
+      
+    
+
+<section class="filters">
+  <div class="row">
+    <select class="dropdown" id="dateFilter">
+      <option value="all" data-ar="الكل" data-en="All">الكل</option>
+      <option value="30" data-ar="آخر 30 يوم" data-en="Last 30 Days">آخر 30 يوم</option>
+      <option value="7" data-ar="آخر 7 أيام" data-en="Last 7 Days">آخر 7 أيام</option>
+      <option value="3" data-ar="آخر 3 أيام" data-en="Last 3 Days" selected>آخر 3 أيام</option>
+    </select>
+  </div>
+  <div class="row">
+    <input type="text" placeholder="بحث برقم الشكوى أو اسم المريض"
+           data-ar-placeholder="بحث برقم الشكوى أو اسم المريض"
+           data-en-placeholder="Search by Complaint ID or Patient Name"
+           class="search-box" />
+    <select class="dropdown">
+      <option data-ar="الحالة" data-en="Status">الحالة</option>
+    </select>
+    <select class="dropdown">
+      <option data-ar="القسم" data-en="Department">القسم</option>
+    </select>
+    <select class="dropdown">
+      <option data-ar="نوع الشكوى" data-en="Complaint Type">نوع الشكوى</option>
+    </select>
+  </div>
+</section>
+
+
+
+
+  <section class="complaints">
+    <div class="complaint">
+      <div class="complaint-header">
+        <span data-ar="شكوى #2025-00123" data-en="Complaint #2025-00123">شكوى #2025-00123</span>
+        <span class="badge yellow" data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</span>
+        <span class="date">30/06/2025 - 10:15</span>
+      </div>
+      <div class="complaint-body">
+        <div class="details">
+          <h3 data-ar="تفاصيل الشكوى" data-en="Complaint Details">تفاصيل الشكوى</h3>
+          <p data-ar="القسم: الطوارئ" data-en="Department: Emergency">القسم: الطوارئ</p>
+          <p data-ar="نوع الشكوى: الخدمات الطبية والعلاجية" data-en="Complaint Type: Medical and Therapeutic Services">نوع الشكوى: الخدمات الطبية والعلاجية</p>
+          <p data-ar="التصنيف الفرعي: نقص في الدواء" data-en="Subcategory: Medication Shortage">التصنيف الفرعي: نقص في الدواء</p>
+          <p data-ar="صُرف لي موعد ولم أجد الدواء المطلوب في الصيدلية..." data-en="I received an appointment but could not find the required medication in the pharmacy...">صُرف لي موعد ولم أجد الدواء المطلوب في الصيدلية...</p>
+        </div>
+        <div class="info">
+          <h3 data-ar="معلومات المريض" data-en="Patient Info">معلومات المريض</h3>
+          <p data-ar="اسم المريض: أحمد محمد" data-en="Patient Name: Ahmed Mohammed">اسم المريض: أحمد محمد</p>
+          <p data-ar="رقم الملف: 124543" data-en="File Number: 124543">رقم الملف: 124543</p>
+          <p data-ar="رقم الهوية: 1023456789" data-en="ID Number: 1023456789">رقم الهوية: 1023456789</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a href="/general complaints/details.html" class="btn blue" data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</a>
+        <a href="/general complaints/reply.html" class="btn green" data-ar="الرد على الشكوى" data-en="Reply to Complaint">الرد على الشكوى</a>
+        <a href="/general complaints/status.html" class="btn gray" data-ar="تغيير الحالة" data-en="Change Status">تغيير الحالة</a>
+        <a href="/general complaints/track.html" class="btn track" data-ar="تتبع حالة الشكوى" data-en="Track Complaint">تتبع حالة الشكوى</a>
+      </div>
+    </div>
+
+    <div class="complaint">
+      <div class="complaint-header">
+        <span data-ar="شكوى #2025-00122" data-en="Complaint #2025-00122">شكوى #2025-00122</span>
+        <span class="badge blue" data-ar="جديدة" data-en="New">جديدة</span>
+        <span class="date">30/06/2025 - 09:30</span>
+      </div>
+      <div class="complaint-body">
+        <div class="details">
+          <h3 data-ar="تفاصيل الشكوى" data-en="Complaint Details">تفاصيل الشكوى</h3>
+          <p data-ar="القسم: العيادات" data-en="Department: Clinics">القسم: العيادات</p>
+          <p data-ar="نوع الشكوى: مواعيد" data-en="Complaint Type: Appointments">نوع الشكوى: مواعيد</p>
+          <p data-ar="التصنيف الفرعي: تأخير موعد" data-en="Subcategory: Appointment Delay">التصنيف الفرعي: تأخير موعد</p>
+          <p data-ar="تم تأجيل موعدي مرتين متتاليتين دون إبلاغ مسبق..." data-en="My appointment was delayed twice without prior notice...">تم تأجيل موعدي مرتين متتاليتين دون إبلاغ مسبق...</p>
+        </div>
+        <div class="info">
+          <h3 data-ar="معلومات المريض" data-en="Patient Info">معلومات المريض</h3>
+          <p data-ar="اسم المريض: سارة أحمد" data-en="Patient Name: Sarah Ahmed">اسم المريض: سارة أحمد</p>
+          <p data-ar="رقم الملف: 124544" data-en="File Number: 124544">رقم الملف: 124544</p>
+          <p data-ar="رقم الهوية: 1023456790" data-en="ID Number: 1023456790">رقم الهوية: 1023456790</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a href="/general complaints/details.html" class="btn blue" data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</a>
+        <a href="/general complaints/reply.html" class="btn green" data-ar="الرد على الشكوى" data-en="Reply to Complaint">الرد على الشكوى</a>
+        <a href="/general complaints/status.html" class="btn gray" data-ar="تغيير الحالة" data-en="Change Status">تغيير الحالة</a>
+        <a href="/general complaints/track.html" class="btn track" data-ar="تتبع حالة الشكوى" data-en="Track Complaint">تتبع حالة الشكوى</a>
+      </div>
+    </div>
+  </section>
+
+<footer class="footer">
+  <button id="exportBtn" class="export-btn export-page-btn">
+    <img src="/icon/excel.png" alt="Export Icon" />
+    <span data-ar="صفحة التصدير" data-en="Export Page">صفحة التصدير</span>
+  </button>
+
+    <button onclick="printPage()" class="export-btn print">
+      <img src="/icon/print.png" />
+      <span data-ar="طباعة" data-en="Print">طباعة</span>
+    </button>
+  </footer>
+
+  <script src="general-complaints.js"></script>
+</body>
+</html>

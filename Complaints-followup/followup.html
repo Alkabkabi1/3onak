@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-ar="متابعة الشكاوى الطبية" data-en="Medical Complaint Follow-up">متابعة الشكاوى الطبية</title>
+  <link rel="stylesheet" href="followup.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>    <div class="back-button">
+      <a href="#" onclick="goBack()">
+        <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+        <span data-ar="عودة" data-en="Back">عودة</span>
+      </a>
+    </div>
+  <!-- رأس الصفحة -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="Hospital Logo" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>
+  </header>
+
+
+
+  <div class="page-header">
+    <h2 class="page-title" data-ar="متابعة الشكاوى الطبية" data-en="Medical Complaint Follow-up">متابعة الشكاوى الطبية</h2>
+    <p class="page-subtitle" data-ar="يرجى إدخال بياناتك للتحقق وعرض الشكاوى السابقة"
+       data-en="Please enter your information to verify and view previous complaints">
+       يرجى إدخال بياناتك للتحقق وعرض الشكاوى السابقة
+    </p>
+  </div>
+
+  <main>
+    <div class="form-card">
+      <div class="lock-title">
+        <img src="/icon/passoward.png" alt="lock icon" class="lock-icon" />
+        <span data-ar="التحقق من هوية المريض" data-en="Patient Identity Verification">التحقق من هوية المريض</span>
+      </div>
+
+      <form onsubmit="handleSubmit(event)">
+        <div class="input-group">
+          <img src="/icon/person.png" class="input-icon" />
+          <input type="text"
+       placeholder="ادخل اسم المريض الكامل"
+       data-ar-placeholder="ادخل اسم المريض الكامل"
+       data-en-placeholder="Enter Full Patient Name"
+       required />
+
+        </div>
+
+        <div class="input-group">
+          <img src="/icon/serial.png" class="input-icon" />
+          <input type="text"
+                 placeholder="رقم الهوية / الإقامة"
+                 data-ar-placeholder="رقم الهوية / الإقامة"
+                 data-en-placeholder="ID / Residency Number"
+                 required />
+        </div>
+
+        <button type="submit" class="submit-btn"
+                data-ar="عرض الشكاوى"
+                data-en="View Complaints">
+          عرض الشكاوى
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script src="followup.js"></script>
+</body>
+</html>

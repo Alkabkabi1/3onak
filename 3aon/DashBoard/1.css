@@ -1,0 +1,719 @@
+/* General Body and Container Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f9fbfd;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-top: 70px; /* Space for the fixed header */
+}
+
+/* Language-specific body styles */
+body.lang-ar {
+    text-align: right; /* Adjusted for better RTL layout */
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl; /* Explicitly set direction for Arabic body */
+}
+
+body.lang-en {
+    text-align: left; /* Adjusted for better LTR layout */
+    font-family: 'Merriweather', serif;
+    direction: ltr; /* Explicitly set direction for English body */
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+/* Header Styles */
+.header {
+    position: fixed; /* Makes the header fixed */
+    top: 0; /* Positions it at the top of the page */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensures it stays above other elements */
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e88e5; /* Specific blue color */
+    /* If you want the title and logo to be on opposite sides of the header-content,
+       the order in HTML should be title, then button, then logo outside header-content if that's the goal.
+       Based on your new HTML, the logo is separate from the title, which is good. */
+}
+
+.header-logo {
+    height: 45px; /* Updated height */
+    /* Based on your HTML, the logo is directly inside .header-content,
+       so it will be between header-title and lang-toggle-btn. */
+    order: 1; /* To place it second in the flex order */
+}
+
+.header-title {
+    order: 0; /* To place it first */
+}
+
+.lang-toggle-btn {
+    order: 2; /* To place it third */
+}
+
+
+/* Language Toggle Button Styles */
+.lang-toggle-btn {
+    background-color: #3686cbbc; /* Blue color */
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lang-toggle-btn:hover {
+    background-color: #1565c0; /* Darker blue on hover */
+}
+
+.lang-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Sidebar Styles */
+aside {
+    width: 250px;
+    background-color: white;
+    height: calc(100vh - 70px); /* Adjusted to account for fixed header */
+    border-left: 1px solid #e0e0e0;
+    padding: 20px;
+    position: fixed;
+    top: 70px; /* Aligned with body's margin-top */
+    bottom: 0;
+    overflow-y: auto;
+    right: 0; /* Position sidebar on the right for RTL */
+}
+
+html[dir="ltr"] aside { /* Specific for LTR to position sidebar on left */
+    left: 0;
+    right: auto;
+    border-right: 1px solid #e0e0e0;
+    border-left: none;
+}
+
+/* Sidebar Menu List and Item Styles */
+aside ul, .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside li {
+    margin-bottom: 8px; /* Space between menu items */
+}
+
+/* Specific icons for menu items (adjust paths as needed) */
+/* The icons in the image are part of the link, so ::before on .menu-link is suitable */
+.menu-link {
+    display: flex; /* Use flex for icon and text alignment */
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-link::before { /* Common icon styling for menu items */
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 10px; /* Space for icon in RTL */
+    /* Filter for icons if they are monochromatic and need color change */
+    filter: invert(20%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(50%);
+}
+
+/* Updated icon paths for sidebar menu (using generic placeholder for now, adjust as needed) */
+.sidebar-menu li:nth-child(1) .menu-link::before { background-image: url('/icon/home.png'); } /* Placeholder */
+.sidebar-menu li:nth-child(2) .menu-link::before { background-image: url('/icon/overview.png'); } /* Placeholder */
+.sidebar-menu li:nth-child(3) .menu-link::before { background-image: url('/icon/report.png'); } /* Placeholder */
+.sidebar-menu li:nth-child(4) .menu-link::before { background-image: url('/icon/misconduct.png'); } /* Placeholder */
+.sidebar-menu li:nth-child(5) .menu-link::before { background-image: url('/icon/pressganey.png'); } /* Placeholder */
+.sidebar-menu li:nth-child(6) .menu-link::before { background-image: url('/icon/complaints.png'); } /* Placeholder */
+.sidebar-menu li:nth-child(7) .menu-link::before { background-image: url('/icon/visitor.png'); } /* Placeholder */
+.sidebar-menu li:nth-child(8) .menu-link::before { background-image: url('/icon/requests.png'); } /* Placeholder */
+
+
+html[dir="ltr"] .menu-link::before {
+    margin-left: 0;
+    margin-right: 10px; /* Space for icon in LTR */
+}
+
+.menu-link:hover {
+    background-color: #f0f0f0;
+    color: #007bff; /* Change text color on hover */
+}
+
+.menu-link:hover::before {
+    filter: invert(30%) sepia(100%) saturate(2000%) hue-rotate(200deg) brightness(80%); /* Change icon color on hover */
+}
+
+.menu-link.active {
+    background-color: #e3f2fd;
+    font-weight: bold;
+    color: #1565c0;
+}
+
+.menu-link.active::before {
+    filter: invert(30%) sepia(100%) saturate(2000%) hue-rotate(200deg) brightness(80%); /* Active icon color */
+}
+
+
+/* Main Content Area */
+main {
+    flex: 1;
+    padding: 30px;
+}
+
+.main-content {
+    margin-right: 270px; /* Space for sidebar on the right for RTL */
+    margin-left: 20px;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+html[dir="ltr"] .main-content {
+    margin-left: 270px;
+    margin-right: 20px;
+}
+
+/* Cards Grid (Updated to match image design) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+.card-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.card-label {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Card Variations */
+.card-percentage .card-value {
+    color: #198754;
+}
+
+.card-green {
+    background-color: #e7f8ef;
+}
+
+.card-green .card-value {
+    color: #198754;
+}
+
+.card-refresh {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-refresh:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.refresh-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('/icon/refresh.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(40%) sepia(60%) saturate(1500%) hue-rotate(200deg) brightness(70%);
+}
+
+.card-total {
+    background-color: #0d6efd;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.card-total .card-value {
+    color: #fff;
+}
+
+.card-total .card-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 11px;
+}
+
+.total-icon {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    font-size: 50px;
+    opacity: 0.15;
+    color: #fff;
+    background-image: url('/icon/total.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    filter: brightness(200%);
+}
+
+html[dir="ltr"] .total-icon {
+    left: -5px;
+    right: auto;
+}
+
+/* Flatpickr input styling adjustments */
+.flatpickr-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%; /* Make it responsive within its container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+
+/* Date Filter Section */
+.date-filter-section {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.date-input-group {
+    display: flex;
+    flex-direction: column;
+    width: 200px; /* Fixed width as per design */
+}
+
+.date-input-group label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+
+#applyDateFilter {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#applyDateFilter:hover {
+    background-color: #0056b3;
+}
+
+.date-range-text {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #444;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start; /* Align buttons to the right for RTL */
+    flex-wrap: wrap;
+}
+
+html[dir="ltr"] .filter-buttons {
+    justify-content: flex-end; /* Align buttons to the left for LTR */
+}
+
+.filter-btn {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #495057;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #dee2e6;
+}
+
+.filter-btn.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+/* Chart Section */
+.chart-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    height: 300px;
+}
+
+.chart-section h3 { /* Assuming h3 inside a chart section */
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 20px;
+}
+
+.export-btn {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.export-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Suggestions Section (Table) */
+.suggestions-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 20px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #dee2e6;
+    text-align: right;
+}
+
+html[dir="ltr"] table th, html[dir="ltr"] table td {
+    text-align: left;
+}
+
+table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #495057;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.status-pill {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+}
+
+.status-green {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-orange {
+    background-color: #ffeeba;
+    color: #856404;
+}
+
+/* Alert Section */
+.alert-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dc3545;
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.alert-icon {
+    font-size: 24px;
+    margin-left: 10px;
+    margin-right: 0;
+    color: #dc3545; /* Red icon color for alert */
+}
+
+html[dir="ltr"] .alert-icon {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.alert-section h3 {
+    margin: 0;
+    color: #dc3545;
+}
+
+.alert-section p {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.alert-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tag-red {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.details-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    aside {
+        width: 200px;
+        padding: 15px;
+        height: calc(100vh - 70px);
+    }
+
+    .main-content {
+        margin-right: 220px;
+        margin-left: 15px;
+        padding: 15px;
+    }
+
+    html[dir="ltr"] .main-content {
+        margin-left: 220px;
+        margin-right: 15px;
+    }
+
+    .header-title {
+        font-size: 22px;
+    }
+    .header-logo {
+        height: 40px;
+    }
+
+    .card-value {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        height: auto;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .header-title {
+        margin-bottom: 0;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .header-logo {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .lang-toggle-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    aside {
+        position: static;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border-bottom: 1px solid #eee;
+        top: auto;
+        padding: 15px;
+    }
+
+    .main-content {
+        margin-right: 0;
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    table th, table td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .status-pill {
+        padding: 3px 8px;
+        font-size: 10px;
+    }
+
+    .filter-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 15px;
+        min-height: 100px;
+    }
+
+    .card-value {
+        font-size: 24px;
+    }
+
+    .card-label {
+        font-size: 12px;
+    }
+
+    .filter-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .alert-section h3 {
+        font-size: 18px;
+    }
+
+    .alert-section p {
+        font-size: 14px;
+    }
+
+    .tag {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .details-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}

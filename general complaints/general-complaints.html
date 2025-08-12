@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشكاوى العامة</title>
+     <!-- خط عربي: Tajawal -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- خط إنجليزي: Merriweather (serif) -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="general-complaints.css">
+</head>  
+      <!-- رأس الصفحة -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+  <img src="/icon/lang.png" alt="language" class="lang-icon" />
+  <span id="langText">العربية | English</span>
+    </div>
+  </header>
+
+<body>
+  <div class="page-header">
+    <h2 class="page-title" data-ar="الشكاوى العامة" data-en="General Complaints">الشكاوى العامة</h2>
+
+<div class="back-button">
+      <a href="#" onclick="goBack()">
+        <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+        <span data-ar="عودة" data-en="Back">عودة</span>
+      </a>
+    </div>
+</div>
+
+
+      
+    
+
+<section class="filters">
+  <div class="row">
+    <select class="dropdown" id="dateFilter">
+      <option value="all" data-ar="الكل" data-en="All" selected>الكل</option>
+      <option value="30" data-ar="آخر 30 يوم" data-en="Last 30 Days">آخر 30 يوم</option>
+      <option value="7" data-ar="آخر 7 أيام" data-en="Last 7 Days">آخر 7 أيام</option>
+      <option value="3" data-ar="آخر 3 أيام" data-en="Last 3 Days">آخر 3 أيام</option>
+    </select>
+  </div>
+  <div class="row">
+    <input type="text" placeholder="بحث برقم الشكوى أو اسم المريض"
+           data-ar-placeholder="بحث برقم الشكوى أو اسم المريض"
+           data-en-placeholder="Search by Complaint ID or Patient Name"
+           class="search-box" />
+    <select class="dropdown">
+      <option data-ar="الحالة" data-en="Status">الحالة</option>
+      <option value="جديدة" data-ar="جديدة" data-en="New">جديدة</option>
+      <option value="قيد المراجعة" data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</option>
+      <option value="قيد المعالجة" data-ar="قيد المعالجة" data-en="Under Processing">قيد المعالجة</option>
+      <option value="تم الحل" data-ar="تم الحل" data-en="Resolved">تم الحل</option>
+      <option value="مغلقة" data-ar="مغلقة" data-en="Closed">مغلقة</option>
+    </select>
+    <select class="dropdown">
+      <option data-ar="القسم" data-en="Department">القسم</option>
+    </select>
+    <select class="dropdown">
+      <option data-ar="نوع الشكوى" data-en="Complaint Type">نوع الشكوى</option>
+    </select>
+  </div>
+</section>
+
+
+
+
+  <section class="complaints">
+    <!-- سيتم تعبئة الشكاوى ديناميكياً -->
+  </section>
+
+<footer class="footer">
+  <button id="exportBtn" class="export-btn export-page-btn">
+    <img src="/icon/excel.png" alt="Export Icon" />
+    <span data-ar="صفحة التصدير" data-en="Export Page">صفحة التصدير</span>
+  </button>
+
+    <button onclick="printPage()" class="export-btn print">
+      <img src="/icon/print.png" />
+      <span data-ar="طباعة" data-en="Print">طباعة</span>
+    </button>
+  </footer>
+
+  <script src="general-complaints.js"></script>
+</body>
+</html>

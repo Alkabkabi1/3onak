@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مؤشر الطلبات العامة</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="general-requests.css">
+    <!-- Google Fonts for Inter, Tajawal, and Merriweather -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <!-- Chart.js Datalabels Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <!-- SheetJS for Excel export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+<body class="flex h-screen overflow-hidden lang-ar">
+
+    <!-- Header (User-provided HTML) -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Placeholder for hospital-logo.png -->   
+            <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+            <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+
+            <button id="langToggle" class="lang-toggle-btn">
+                <!-- Placeholder for lang.png -->
+                <img src="/icon/lang.png" alt="language" class="lang-icon" />
+                <span id="langText">العربية | English</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar (User-provided HTML) -->
+   <br><br> 
+    <aside>
+        <ul class="sidebar-menu">
+            <li><a href="/login/home.html" class="menu-link" data-ar="الصفحة الرئيسية" data-en="Home Page">الصفحة الرئيسية</a></li>
+            <li><a href="overview.html" class="menu-link" data-ar="نظرة عامة" data-en="Overview">نظرة عامة</a></li>
+            <li><a href="report-937.html" class="menu-link " data-ar="مؤشر بلاغات 937" data-en="937 Report Index">مؤشر بلاغات 937</a></li> <!-- Active link changed -->
+            <li><a href="misconduct.html" class="menu-link" data-ar="بلاغات سوء التعامل" data-en="Misconduct Reports">بلاغات سوء التعامل</a></li>
+            <li><a href="pressganey.html" class="menu-link" data-ar="مؤشر بريسيبي" data-en="Press Ganey Index">مؤشر بريسيبي</a></li>
+            <li><a href="inperson-complaints.html" class="menu-link" data-ar="مؤشر الشكاوى الحضورية" data-en="In-person Complaints">مؤشر الشكاوى الحضورية</a></li>
+            <li><a href="secret-visitor.html" class="menu-link" data-ar="ملاحظات الزائر السري" data-en="Secret Visitor Notes">ملاحظات الزائر السري</a></li>
+            <li><a href="general-requests.html" class="menu-link active" data-ar="مؤشر الطلبات العامة" data-en="General Requests Index">مؤشر الطلبات العامة</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col p-8 overflow-auto" style="margin-right: 250px; margin-top: 75px;">
+        <!-- Chart Section -->
+        <div class="bg-white rounded-lg shadow-md p-6 flex-1">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center" data-ar="الطلبات العامة المنفذة وغير المنفذة حسب النوع" data-en="Fulfilled and Unfulfilled General Requests by Type">الطلبات العامة المنفذة وغير المنفذة حسب النوع</h2>
+
+            <!-- Chart Legend -->
+            <div class="flex justify-center items-center mb-8">
+                <div class="flex items-center ml-4">
+                    <span class="w-4 h-4 rounded-full bg-red-500 ml-2"></span>
+                    <span class="text-gray-700 text-sm" data-ar="غير منفذ" data-en="Unfulfilled">غير منفذ</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="w-4 h-4 rounded-full bg-green-500 ml-2"></span>
+                    <span class="text-gray-700 text-sm" data-ar="منفذ" data-en="Fulfilled">منفذ</span>
+                </div>
+            </div>
+
+            <!-- Chart.js Canvas -->
+            <div class="relative w-full" style="height: 350px;">
+                <canvas id="generalRequestsChart" style="width: 100%; height: 350px; max-width: 100%; max-height: 350px;"></canvas>
+            </div>
+
+            <!-- Buttons for Export Report and AI Insights -->
+            <div class="flex justify-center mt-8 space-x-4 space-x-reverse"> <!-- space-x-reverse for RTL spacing -->
+                <button id="checkDataBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full shadow-lg flex items-center">
+                    <i class="fas fa-search ml-2"></i>
+                    <span data-ar="فحص البيانات" data-en="Check Data">فحص البيانات</span>
+                </button>
+                <button id="addRequestBtn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full shadow-lg flex items-center">
+                    <i class="fas fa-plus ml-2"></i>
+                    <span data-ar="إضافة طلب جديد" data-en="Add New Request">إضافة طلب جديد</span>
+                </button>
+                <button id="exportReportBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full shadow-lg flex items-center">
+                    <i class="fas fa-download ml-2"></i>
+                    <span data-ar="تصدير التقرير" data-en="Export Report">تصدير التقرير</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="general-requests.js"></script>
+</body>
+</html>

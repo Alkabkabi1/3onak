@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عون - نظام إلكتروني صحي</title>
+  <link rel="stylesheet" href="3oan.css" />
+
+  <!-- خط عربي: Tajawal -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <!-- خط إنجليزي: Merriweather (serif) -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- رأس الصفحة -->
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- القسم الرئيسي -->
+  <main class="main-section">
+    <h1 class="main-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</h1>
+    <p class="main-subtitle"
+       data-ar="نظام إلكتروني متكامل للتواصل مع المنشآت الصحية"
+       data-en="A comprehensive digital system to communicate with healthcare facilities">
+      نظام إلكتروني متكامل للتواصل مع المنشآت الصحية
+    </p>
+
+    <p class="main-text"
+       data-ar="يهدف إلى تمكين المرضى وذويهم من إرسال آرائهم وبلاغاتهم المتعلقة بالخدمات الصحية بكل يسر وسهولة، بما يُسهم في تحسين الخدمات ورفع جودة الرعاية الصحية في التجمع الصحي."
+       data-en="It aims to empower patients and their families to easily send their opinions and complaints related to health services, contributing to improved services and enhanced quality of healthcare.">
+       يهدف إلى تمكين المرضى وذويهم من إرسال آرائهم وبلاغاتهم المتعلقة
+      بالخدمات الصحية بكل يسر وسهولة، بما يُسهم في تحسين الخدمات ورفع جودة الرعاية الصحية
+      في التجمع الصحي.
+    </p>
+
+    <p class="main-text"
+       data-ar="تم تصميم النظام لتوفير تجربة سهلة للمستخدمين من خلال تقديم الشكوى، ثم متابعة استلام الردود ومعالجتها من قبل المختصين بكل سهولة."
+       data-en="The system is designed to provide users with an easy experience through submitting complaints, tracking responses, and ensuring follow-up by specialists.">
+      تم تصميم النظام لتوفير تجربة سهلة للمستخدمين من خلال تقديم الشكوى، ثم متابعة استلام
+      الردود ومعالجتها من قبل المختصين بكل سهولة.
+    </p>
+
+    <br>
+    <a href="/login/login.html" class="btn" data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</a>
+  </main>
+
+  <!-- مميزات النظام -->
+  <section class="features-section">
+    <h2 class="features-title" data-ar="مميزات النظام" data-en="System Features">مميزات النظام</h2>
+    <div class="features-container">
+      <div class="feature-box">
+        <img src="/icon/submit.png" alt="تقديم الشكاوى">
+        <h3 data-ar="تقديم الشكاوى بسهولة" data-en="Easy Complaint Submission">تقديم الشكاوى بسهولة</h3>
+        <p data-ar="سهولة تقديم الشكوى من أي مكان وفي أي وقت." data-en="Easily submit complaints anytime, anywhere.">سهولة تقديم الشكوى من أي مكان وفي أي وقت.</p>
+      </div>
+      <div class="feature-box">
+        <img src="/icon/status.png" alt="متابعة حالة الشكوى">
+        <h3 data-ar="متابعة حالة الشكوى" data-en="Complaint Tracking">متابعة حالة الشكوى</h3>
+        <p data-ar="متابعة الشكوى إلكترونيًا حتى إغلاقها." data-en="Track the complaint electronically until resolved.">متابعة الشكوى إلكترونيًا حتى إغلاقها.</p>
+      </div>
+      <div class="feature-box">
+        <img src="/icon/improve.png" alt="تحسين جودة الخدمات">
+        <h3 data-ar="تحسين جودة الخدمات" data-en="Service Quality Improvement">تحسين جودة الخدمات</h3>
+        <p data-ar="مساهمة الشكاوى في تطوير وتحسين الخدمات الصحية المقدمة." data-en="Complaints help improve and develop provided healthcare services.">مساهمة الشكاوى في تطوير وتحسين الخدمات الصحية المقدمة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ملف الجافاسكربت -->
+  <script src="3oan.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misconduct Reports</title>
+    <!-- Tailwind CSS CDN -->
+       <link rel="stylesheet" href="misconduct.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Inter, Tajawal, and Merriweather -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <!-- Chart.js Datalabels Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+    
+</head>
+<body class="flex h-screen overflow-hidden lang-ar">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Placeholder for hospital-logo.png -->   
+            <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+            <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+            <button id="langToggle" class="lang-toggle-btn">
+                <!-- Placeholder for lang.png -->
+                <img src="/icon/lang.png" alt="language" class="lang-icon" />
+                <span id="langText">العربية | English</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside>
+        <ul class="sidebar-menu">
+            <li><a href="/login/home.html" class="menu-link" data-ar="الصفحة الرئيسية" data-en="Home Page">الصفحة الرئيسية</a></li>
+            <li><a href="overview.html" class="menu-link" data-ar="نظرة عامة" data-en="Overview">نظرة عامة</a></li>
+            <li><a href="report-937.html" class="menu-link" data-ar="مؤشر بلاغات 937" data-en="937 Report Index">مؤشر بلاغات 937</a></li> <!-- Active link changed -->
+            <li><a href="misconduct.html" class="menu-link active" data-ar="بلاغات سوء التعامل" data-en="Misconduct Reports">بلاغات سوء التعامل</a></li>
+            <li><a href="pressganey.html" class="menu-link" data-ar="مؤشر بريسيبي" data-en="Press Ganey Index">مؤشر بريسيبي</a></li>
+            <li><a href="inperson-complaints.html" class="menu-link" data-ar="مؤشر الشكاوى الحضورية" data-en="In-person Complaints">مؤشر الشكاوى الحضورية</a></li>
+            <li><a href="secret-visitor.html" class="menu-link" data-ar="ملاحظات الزائر السري" data-en="Secret Visitor Notes">ملاحظات الزائر السري</a></li>
+            <li><a href="general-requests.html" class="menu-link" data-ar="مؤشر الطلبات العامة" data-en="General Requests Index">مؤشر الطلبات العامة</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col p-8 overflow-auto" style="margin-right: 250px; margin-top: 75px;">
+        <!-- Date Range Filter Section -->
+        <div class="flex flex-wrap justify-end items-center gap-4 mb-8">
+            <div class="flex items-center gap-2">
+                <label for="dateFrom" class="text-gray-700 font-medium" data-ar="من تاريخ" data-en="From Date">من تاريخ</label>
+                <input type="text" id="dateFrom" class="flatpickr-input" placeholder="اختر التاريخ" data-ar="اختر التاريخ" data-en="Select Date">
+            </div>
+            <div class="flex items-center gap-2">
+                <label for="dateTo" class="text-gray-700 font-medium" data-ar="إلى تاريخ" data-en="To Date">إلى تاريخ</label>
+                <input type="text" id="dateTo" class="flatpickr-input" placeholder="اختر التاريخ" data-ar="اختر التاريخ" data-en="Select Date">
+            </div>
+            <button id="applyFilterBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md">
+                <span data-ar="تطبيق الفلترة" data-en="Apply Filter">تطبيق الفلترة</span>
+            </button>
+        </div>
+
+        <!-- Misconduct Reports Chart Section -->
+        <div class="chart-container mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center" data-ar="عدد بلاغات سوء التعامل حسب القسم" data-en="Number of Misconduct Reports by Department">عدد بلاغات سوء التعامل حسب القسم</h2>
+            <div class="relative w-full" style="height: 400px;">
+                <canvas id="misconductChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Buttons for Export Report -->
+        <div class="flex justify-center gap-4 mt-8">
+            <button id="refreshBtn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full shadow-lg flex items-center">
+                <i class="fas fa-sync-alt ml-2"></i>
+                <span data-ar="تحديث البيانات" data-en="Refresh Data">تحديث البيانات</span>
+            </button>
+            <button id="exportReportBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full shadow-lg flex items-center">
+                <i class="fas fa-download ml-2"></i>
+                <span data-ar="تصدير التقرير" data-en="Export Report">تصدير التقرير</span>
+            </button>
+        </div>
+    </div>
+  <script src="misconduct.js"></script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Flatpickr Arabic locale -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
+
+</body>
+</html>

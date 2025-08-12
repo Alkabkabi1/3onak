@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-ar="تقديم شكوى جديدة" data-en="New Complaint">تقديم شكوى جديدة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Newcomplaint.css" />
+</head> 
+
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <h2 class="page-title" data-ar="تقديم شكوى جديدة" data-en="Submit New Complaint">تقديم شكوى جديدة</h2>
+
+    <div class="back-button">
+      <a href="#" onclick="goBack()">
+        <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+        <span data-ar="عودة" data-en="Back">عودة</span>
+      </a>
+    </div>
+  </div>
+
+  <p class="page-subtitle"
+     data-ar="يرجى تعبئة المعلومات بشكل دقيق لتسهيل معالجة شكواك"
+     data-en="Please fill in the details accurately to help us process your complaint">
+     يرجى تعبئة المعلومات بشكل دقيق لتسهيل معالجة شكواك
+  </p>
+
+  <main>
+    
+    <!-- بيانات المريض -->
+    <section class="form-section">
+      <h3>
+        <img src="/icon/patient.png" class="icon-title" alt="أيقونة المريض" />
+        <span data-ar="بيانات المريض / صاحب الشكوى" data-en="Patient / Complainant Info">بيانات المريض / صاحب الشكوى</span>
+      </h3>
+      <div class="form-grid">
+        <input type="text" id="fullName"
+               placeholder="الاسم الكامل للمريض"
+               data-ar-placeholder="الاسم الكامل للمريض"
+               data-en-placeholder="Full Name of Patient" />
+
+        <input type="text" id="nationalId"
+               placeholder="رقم الهوية / الإقامة"
+               data-ar-placeholder="رقم الهوية / الإقامة"
+               data-en-placeholder="National ID / Iqama" />
+
+        <select id="gender" data-ar-placeholder="اختر الجنس" data-en-placeholder="Select Gender">
+          <option value="" disabled selected data-ar="اختر الجنس" data-en="Select Gender">اختر الجنس</option>
+          <option value="ذكر" data-ar="ذكر" data-en="Male">ذكر</option>
+          <option value="أنثى" data-ar="أنثى" data-en="Female">أنثى</option>
+        </select>
+
+        <input type="text" id="mobile"
+               placeholder="رقم الجوال"
+               data-ar-placeholder="رقم الجوال"
+               data-en-placeholder="Mobile Number" />
+      </div>
+    </section>
+
+    <!-- بيانات الزيارة -->
+    <section class="form-section">
+      <h3>
+        <img src="/icon/document1.png" class="icon-title" alt="أيقونة الزيارة" />
+        <span data-ar="بيانات الزيارة" data-en="Visit Information">بيانات الزيارة</span>
+      </h3>
+      <div class="form-grid">
+        <select id="department">
+          <option disabled selected data-ar="اختر القسم" data-en="Select Department">اختر القسم</option>
+        </select>
+
+        <input type="date" id="visitDate"
+               placeholder="تاريخ الزيارة"
+               data-ar-placeholder="تاريخ الزيارة"
+               data-en-placeholder="Visit Date" />
+      </div>
+    </section>
+
+    <!-- تفاصيل الشكوى -->
+    <section class="form-section">
+      <h3>
+        <img src="/icon/calendar.png" class="icon-title" alt="أيقونة الشكوى" />
+        <span data-ar="تفاصيل الشكوى" data-en="Complaint Details">تفاصيل الشكوى</span>
+      </h3>
+      <div class="form-grid">
+        <select id="mainType">
+          <option disabled selected data-ar="اختر نوع الشكوى" data-en="Select Complaint Type">اختر نوع الشكوى</option>
+        </select>
+
+        <select id="subType">
+          <option disabled selected data-ar="اختر التصنيف الفرعي" data-en="Select Subcategory">اختر التصنيف الفرعي</option>
+        </select>
+
+        <textarea id="details"
+                  placeholder="يرجى شرح التفاصيل بدقة"
+                  data-ar-placeholder="يرجى شرح التفاصيل بدقة (مثلاً: أين، مع من، ...)"
+                  data-en-placeholder="Please describe the details clearly (e.g., where, with whom, etc.)">
+        </textarea>
+      </div>
+    </section>
+
+    <!-- المرفقات -->
+    <section class="form-section">
+      <h3>
+        <img src="/icon/attachment .png" />
+        <span data-ar="المرفقات" data-en="Attachments">المرفقات</span>
+      </h3>
+
+      <div class="upload-box" onclick="triggerUpload()">
+        <input type="file" id="attachments" accept="image/*" multiple style="display: none;" onchange="previewImage(event)" />
+        
+        <label for="attachments" class="custom-upload-box" id="preview-area">
+          <img src="/icon/attachment .png" alt="أيقونة إرفاق" class="clip-icon" />
+          <p>
+            <span data-ar="اضغط لاختيار الملفات أو قم بسحب وإفلات الملفات هنا"
+                  data-en="Click to choose files or drag and drop them here">
+              اضغط لاختيار الملفات أو قم بسحب وإفلات الملفات هنا
+            </span><br>
+            <span class="note" data-ar="(PDF أو صورة بحد أقصى 15 ميجابايت)"
+                  data-en="(PDF or image up to 15MB)">
+              (PDF أو صورة بحد أقصى 15 ميجابايت)
+            </span>
+          </p>
+        </label>
+      </div>
+    </section>
+
+    <!-- زر الإرسال -->
+    <div class="submit-btn">
+      <button type="button"
+              onclick="submitComplaint()"
+              data-ar="إرسال الشكوى"
+              data-en="Submit Complaint">
+        إرسال الشكوى
+      </button>
+    </div>
+</main>
+<script src="Newcomplaint.js"></script>
+</body>
+
+</html>

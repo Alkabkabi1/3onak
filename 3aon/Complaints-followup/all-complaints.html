@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة شكاوى المرضى - مستشفى الملك عبد العزيز</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="all-complaints.css">
+
+</head>
+<body>
+        <!-- رأس الصفحة -->
+  <header class="fixed-header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>   
+  </header>
+
+
+<section class="patient-summary-new">
+  <div class="info-group">
+    <i class="fas fa-user"></i>
+    <div class="info-text">
+      <span class="label" data-ar="اسم المريض" data-en="Patient Name">اسم المريض</span>
+      <span class="value">أحمد محمد</span>
+    </div>
+  </div>
+
+  <div class="info-group">
+    <i class="fas fa-file-alt"></i>
+    <div class="info-text">
+      <span class="label" data-ar="رقم الملف" data-en="File Number">رقم الملف</span>
+      <span class="value">124543</span>
+    </div>
+  </div>
+
+  <div class="info-group">
+    <i class="fas fa-exclamation-triangle"></i>
+    <div class="info-text">
+      <span class="label" data-ar="عدد الشكاوى" data-en="Number of Complaints">عدد الشكاوى</span>
+      <span class="value">5</span>
+    </div>
+  </div>
+
+  <!-- زر العودة داخل معلومات المريض -->
+  <div class="info-group back-button-inline">
+    <a href="#" onclick="goBack()">
+      <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+      <span data-ar="عودة" data-en="Back">عودة</span>
+    </a>
+  </div>
+</section>
+<br><br>
+<section class="filters">
+  <div class="filter-group">
+    <input type="date" class="form-control" placeholder="اختر التاريخ" data-ar="اختر التاريخ" data-en="Select Date" />
+
+    <select class="form-control">
+      <option data-ar="القسم" data-en="Department">القسم</option>
+      <option value="emergency" data-ar="الطوارئ" data-en="Emergency">الطوارئ</option>
+      <option value="inpatient" data-ar="التنويم" data-en="Inpatient">التنويم</option>
+      <option value="laboratory" data-ar="المختبر" data-en="Laboratory">المختبر</option>
+      <option value="clinics" data-ar="العيادات" data-en="Clinics">العيادات</option>
+    </select>
+
+    <select class="form-control">
+      <option data-ar="نوع الشكوى" data-en="Complaint Type">نوع الشكوى</option>
+      <option value="entry-delay" data-ar="تأخير الدخول" data-en="Entry Delay">تأخير الدخول</option>
+      <option value="room-cleanliness" data-ar="نظافة الغرفة" data-en="Room Cleanliness">نظافة الغرفة</option>
+      <option value="result-delay" data-ar="تأخير النتائج" data-en="Result Delay">تأخير النتائج</option>
+      <option value="medication-shortage" data-ar="نقص علاج" data-en="Medication Shortage">نقص علاج</option>
+      <option value="staff-conduct" data-ar="تعامل الموظف" data-en="Staff Behavior">تعامل الموظف</option>
+    </select>
+
+  <div class="search-input-group">
+  <input type="text" class="form-control" 
+         placeholder="بحث برقم الشكوى"
+         data-ar-placeholder="بحث برقم الشكوى"
+         data-en-placeholder="Search by Complaint ID"
+         id="searchComplaint">
+  <button class="search-btn"><i class="fas fa-search"></i></button>
+</div>
+  <button class="btn btn-primary" id="applyFiltersBtn" data-ar="تطبيق التصفية" data-en="Apply Filters">تطبيق التصفية</button>
+</section>
+
+<section class="complaint-list">
+  <table>
+    <thead>
+      <tr>
+        <th data-ar="رقم الشكوى" data-en="Complaint ID">رقم الشكوى</th>
+        <th data-ar="نوع الشكوى" data-en="Complaint Type">نوع الشكوى</th>
+        <th data-ar="القسم" data-en="Department">القسم</th>
+        <th data-ar="التاريخ" data-en="Date">التاريخ</th>
+        <th data-ar="الحالة" data-en="Status">الحالة</th>
+        <th data-ar="التفاصيل" data-en="Details">التفاصيل</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>#12456</td>
+        <td data-ar="تأخير الدخول" data-en="Entry Delay">تأخير الدخول</td>
+        <td data-ar="الطوارئ" data-en="Emergency">الطوارئ</td>
+        <td>02/07/2024</td>
+        <td><span class="status-tag status-under-review" data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</span></td>
+        <td><a href="/general complaints/details.html" class="details-link" data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</a></td>
+      </tr>
+      <tr>
+        <td>#12453</td>
+        <td data-ar="نظافة الغرفة" data-en="Room Cleanliness">نظافة الغرفة</td>
+        <td data-ar="التنويم" data-en="Inpatient">التنويم</td>
+        <td>01/07/2024</td>
+        <td><span class="status-tag status-closed" data-ar="مغلقة" data-en="Closed">مغلقة</span></td>
+        <td>
+          <a href="/general complaints/details.html" class="details-link" data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</a>
+        </td>
+      </tr>
+      <tr>
+        <td>#12447</td>
+        <td data-ar="تأخير النتائج" data-en="Result Delay">تأخير النتائج</td>
+        <td data-ar="المختبر" data-en="Laboratory">المختبر</td>
+        <td>30/06/2024</td>
+        <td><span class="status-tag status-under-review" data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</span></td>
+        <td><a href="/general complaints/details.html" class="details-link" data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</a></td>
+      </tr>
+      <tr>
+        <td>#12431</td>
+        <td data-ar="نقص علاج" data-en="Medication Shortage">نقص علاج</td>
+        <td data-ar="العيادات" data-en="Clinics">العيادات</td>
+        <td>28/06/2024</td>
+        <td><span class="status-tag status-closed" data-ar="مغلقة" data-en="Closed">مغلقة</span></td>
+        <td>
+          <a href="#" class="details-link" data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</a>
+        </td>
+      </tr>
+      <tr>
+        <td>#12418</td>
+        <td data-ar="تعامل الموظف" data-en="Staff Behavior">تعامل الموظف</td>
+        <td data-ar="الطوارئ" data-en="Emergency">الطوارئ</td>
+        <td>26/06/2024</td>
+        <td><span class="status-tag status-new" data-ar="جديدة" data-en="New">جديدة</span></td>
+        <td><a href="/general complaints/details.html" class="details-link" data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="pagination-footer">
+  <div class="export-results" onclick="exportResults()">
+    <i class="fas fa-download"></i>
+    <span data-ar="تصدير النتائج" data-en="Export Results">تصدير النتائج</span>
+  </div>
+</section>
+  <div class="pagination">
+    <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+    <button class="pagination-btn active">1</button>
+    <button class="pagination-btn">2</button>
+    <button class="pagination-btn">3</button>
+    <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+  </div>
+</section>
+
+</main>
+    <script src="all-complaints.js"></script>
+</body>
+</html>

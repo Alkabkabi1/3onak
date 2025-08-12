@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-ar="تحديث حالة الشكوى" data-en="Update Complaint Status">تحديث حالة الشكوى</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="status.css">
+</head>
+<body>      
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>  
+  </header>
+    <div class="back-button">
+      <a href="#" onclick="goBack()">
+        <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+        <span data-ar="عودة" data-en="Back">عودة</span>
+      </a>
+    </div>
+
+  <br><br>
+   <div class="modal-container">
+    <div class="modal-header">
+      <h2 data-ar="تحديث حالة الشكوى" data-en="Update Complaint Status">تحديث حالة الشكوى</h2>
+    </div>
+
+
+ 
+
+    <div class="modal-body">
+      <p><strong data-ar="رقم الشكوى:" data-en="Complaint ID:">رقم الشكوى:</strong>
+         <span class="complaint-id">#2025-00123</span>
+      </p>
+
+      <label data-ar="الحالة الحالية:" data-en="Current Status:">الحالة الحالية:</label>
+      <input type="text" value="قيد المراجعة" disabled class="readonly-input">
+
+      <label data-ar="تحديث الحالة إلى:" data-en="Update Status To:">تحديث الحالة إلى:</label>
+      <select id="new-status">
+        <option value="قيد المراجعة" data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</option>
+        <option value="تم الحل" data-ar="تم الحل" data-en="Resolved">تم الحل</option>
+        <option value="مرفوضة" data-ar="مرفوضة" data-en="Rejected">مرفوضة</option>
+        <option value="مغلقة" data-ar="مغلقة" data-en="Closed">مغلقة</option>
+      </select>
+
+      <label data-ar="ملاحظات (اختياري):" data-en="Notes (Optional):">ملاحظات (اختياري):</label>
+      <textarea id="notes"
+                placeholder="أدخل سبب تغيير الحالة أو أي ملاحظات إضافية..."
+                data-ar-placeholder="أدخل سبب تغيير الحالة أو أي ملاحظات إضافية..."
+                data-en-placeholder="Enter reason for status change or any additional notes..."></textarea>
+    </div>
+
+    <div class="modal-footer">
+      <button class="cancel-btn" data-ar="إلغاء" data-en="Cancel">إلغاء</button>
+      <button class="save-btn" data-ar="حفظ التغييرات" data-en="Save Changes">حفظ التغييرات</button>
+    </div>
+
+    <div class="success-message hidden" id="successMessage"
+         data-ar="تم تحديث حالة الشكوى بنجاح"
+         data-en="Complaint status updated successfully">
+      تم تحديث حالة الشكوى بنجاح
+    </div>
+  </div>
+
+  <script src="status.js"></script>
+</body>
+</html>

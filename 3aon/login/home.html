@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الصفحة الرئيسية - الشكاوى</title>
+ <!-- خط عربي: Tajawal -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- خط إنجليزي: Merriweather (serif) -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+<button id="langToggle" class="lang-toggle-btn">
+  <img src="/icon/lang.png" alt="language" class="lang-icon" />
+  <span id="langText">العربية | English</span>
+</button>
+
+
+
+
+    </div>
+  </header>
+
+  <main>
+    <section class="dashboard">
+      <div class="card">
+        <img src="/icon/plus.png" alt="تقديم شكوى">
+        <h3 data-ar="تقديم شكوى جديدة" data-en="New Complaint">تقديم شكوى جديدة</h3>
+        <p data-ar="قم بتسجيل شكوى طبية جديدة" data-en="Register a new medical complaint">قم بتسجيل شكوى طبية جديدة</p>
+        <a href="/New complaint/Newcomplaint.html" class="btn" data-ar="تقديم شكوى" data-en="Submit">تقديم شكوى</a>
+      </div>
+
+      <div class="card">
+        <img src="/icon/list.png" alt="متابعة الشكاوى">
+        <h3 data-ar="متابعة الشكاوى" data-en="Follow Complaints">متابعة الشكاوى</h3>
+        <p data-ar="تتبع حالة شكاواك المقدمة" data-en="Track your submitted complaints">تتبع حالة شكاواك المقدمة</p>
+        <a href="/Complaints-followup/followup.html" class="btn" data-ar="متابعة الشكاوي" data-en="Follow">متابعة الشكاوي</a>
+      </div>
+
+      <div class="card">
+        <img src="/icon/chart.png" alt="لوحة المعلومات">
+        <h3 data-ar="لوحة المعلومات" data-en="Dashboard">لوحة المعلومات</h3>
+        <p data-ar="إحصائيات وتحليلات الشكاوى" data-en="Complaint analytics and statistics">إحصائيات وتحليلات الشكاوى</p>
+        <a href="/DashBoard/1.html" class="btn" data-ar="عرض التفاصيل" data-en="View Details">عرض التفاصيل</a>
+      </div>
+
+      <div class="card">
+        <img src="/icon/group.png" alt="الشكاوى العامة">
+        <h3 data-ar="الشكاوى العامة" data-en="Public Complaints">الشكاوى العامة</h3>
+        <p data-ar="استعراض الشكاوى العامة المقدمة" data-en="Browse submitted public complaints">استعراض الشكاوى العامة المقدمة</p>
+        <a href="/general complaints/general-complaints.html" class="btn" data-ar="استعراض" data-en="Browse">استعراض</a>
+      </div>
+
+        <div class="card full-width">
+        <img src="/icon/admin.png" alt="لوحة تحكم المسؤول ">
+        <h3 data-ar=" لوحة تحكم المسؤول" data-en="Administrator Control Panel">لوحة تحكم المسؤول </h3>
+        <p data-ar="إدارة النظام والمستخدمين" data-en="System and User Administration">إدارة النظام والمستخدمين</p>
+        <a href="/admin/admin.html" class="btn" data-ar=" الدخول للوحة التحكم" data-en="Log in to the control panel">الدخول للوحة التحكم </a>
+      </div>
+
+    </section>
+  </main>
+<script src="home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الصفحة الرئيسية - الشكاوى</title>
+ <!-- خط عربي: Tajawal -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- خط إنجليزي: Merriweather (serif) -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="logs.css">
+</head>
+
+<body>  
+    <div class="back-button">
+      <a href="#" onclick="goBack()">
+        <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+        <span data-ar="عودة" data-en="Back">عودة</span>
+      </a>
+    </div>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+<button id="langToggle" class="lang-toggle-btn">
+  <img src="/icon/lang.png" alt="language" class="lang-icon" />
+  <span id="langText">العربية | English</span>
+</button>
+  
+
+  <!-- الفلاتر -->
+  <section class="filter-section">
+    <input type="text" class="filter-input" placeholder="رقم الشكوى">
+    <input type="date" class="filter-input">
+    <input type="date" class="filter-input">
+    <input type="text" class="filter-input" placeholder="اسم المستخدم">
+    <select class="filter-input">
+      <option>الكل</option>
+      <option>تقديم شكوى</option>
+      <option>تغيير حالة شكوى</option>
+      <option>رد على شكوى</option>
+    </select>
+    <button class="filter-btn">تطبيق الفلتر</button>
+  </section>
+
+  <!-- عنوان -->
+  <h3 class="table-title">سجل النشاطات</h3>
+
+  <!-- بحث -->
+  <div class="table-search">
+    <input type="text" placeholder="بحث...">
+  </div>
+
+  <!-- الأزرار -->
+  <div class="action-buttons">
+    <button class="export-btn">تصدير PDF</button>
+    <button class="export-word">تصدير Word</button>
+    <button class="delete-btn">حذف السجلات القديمة</button>
+  </div>
+
+  <!-- الجدول -->
+  <table>
+    <tbody>
+  <tr>
+    <td>1</td>
+    <td>أحمد</td>
+    <td><span class="tag green">تقديم شكوى</span></td>
+    <td>أرسل شكوى عن نقص الأدوية</td>
+    <td>102</td>
+    <td>2025-07-06 10:15:23</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>سارة</td>
+    <td><span class="tag yellow">تغيير حالة شكوى</span></td>
+    <td>تم تحويل الحالة للمراجعة</td>
+    <td>102</td>
+    <td>2025-07-06 10:30:41</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>المدير</td>
+    <td><span class="tag gray">تصدير تقرير</span></td>
+    <td>PDF للفترة 1-5 يوليو</td>
+    <td>-</td>
+    <td>2025-07-06 11:00:00</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>نورة</td>
+    <td><span class="tag blue">رد على شكوى</span></td>
+    <td>رد للمريض بخصوص الدواء</td>
+    <td>102</td>
+    <td>2025-07-06 11:12:18</td>
+  </tr>
+</tbody>
+
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>المستخدم</th>
+        <th>نوع الإجراء</th>
+        <th>الوصف</th>
+        <th>رقم الشكوى</th>
+        <th>الوقت</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- الصفوف تُولّد من الباكند -->
+    </tbody>
+  </table>
+
+  <!-- الترقيم -->
+  <div class="pagination">
+    <span class="records-info">عرض 1-10 من 50 سجل</span>
+    <div class="pages">
+      <button>السابق</button>
+      <button class="active">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>التالي</button>
+    </div>
+  </div>
+
+  <script src="logs.js"></script>
+</body>
+</html>

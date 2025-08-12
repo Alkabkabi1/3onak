@@ -1,0 +1,263 @@
+/* General Styles (from previous example, ensure these are present) */
+:root {
+    --primary-color: #007bff; /* Example blue, adjust as needed */
+    --green-satisfied: #4CAF50;
+    --red-dissatisfied: #F44336;
+    --light-gray: #f5f5f5;
+    --dark-gray: #333;
+    --text-color: #555;
+    --border-color: #eee;
+    --shadow-light: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    direction: rtl; /* For right-to-left layout */
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar (from previous example, ensure these are present) */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo .fas {
+    margin-left: 10px;
+    color: #3f51b5;
+}
+
+.nav-menu ul {
+    list-style: none;
+}
+
+.nav-menu ul li {
+    margin-bottom: 10px;
+}
+
+.nav-menu ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-menu ul li a .fas {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #999;
+}
+
+.nav-menu ul li a:hover,
+.nav-menu ul li a.active {
+    background-color: #e0f2f7;
+    color: var(--primary-color);
+}
+
+.nav-menu ul li a.active .fas {
+    color: var(--primary-color);
+}
+
+/* Main Content (from previous example, ensure these are present) */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f8f9fa; /* Slightly different background for main content */
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.language-toggle {
+    font-size: 13px;
+    color: #999;
+    cursor: pointer;
+}
+
+
+/* New Styles for 5.png */
+
+.chart-section {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+}
+
+.section-title {
+    font-size: 20px;
+    color: var(--dark-gray);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.legend-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+    font-size: 13px;
+    color: #666;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 8px; /* Space for RTL */
+    border: 1px solid #ccc; /* Add slight border for visibility of lighter colors */
+}
+
+/* Legend Colors (tuned to match image) */
+.legend-color.red { background-color: #FF0000; border-color: #cc0000;}
+.legend-color.blue { background-color: #87CEEB; border-color: #6a9cc2; } /* SkyBlue */
+.legend-color.purple { background-color: #800080; border-color: #660066; }
+.legend-color.green { background-color: #4CAF50; border-color: #388e3c; }
+.legend-color.orange { background-color: #FFA500; border-color: #cc8400; }
+.legend-color.yellow { background-color: #FFD700; border-color: #ccaa00; } /* Gold, closer to image */
+.legend-color.brown { background-color: #A52A2A; border-color: #842121; } /* Not clearly visible in chart, but in legend */
+.legend-color.light-grey { background-color: #D3D3D3; border-color: #a0a0a0; } /* Not clearly visible in chart, but in legend */
+
+.chart-wrapper {
+    position: relative;
+    height: 400px; /* Adjust height as needed */
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.export-button-container {
+    text-align: center;
+}
+
+.export-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    transition: background-color 0.3s ease;
+}
+
+.export-button .fas {
+    font-size: 16px;
+}
+
+.export-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design (from previous example, ensure these are present and adapt if necessary) */
+@media (max-width: 1200px) {
+    /* No specific changes for this page's main chart layout needed here */
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .sidebar .logo {
+        margin-bottom: 15px;
+    }
+    .nav-menu ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .nav-menu ul li {
+        margin-bottom: 0;
+    }
+    .nav-menu ul li a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    .main-content {
+        padding: 15px;
+    }
+    .legend-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .chart-wrapper {
+        height: 300px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .nav-menu ul li a {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .section-title {
+        font-size: 18px;
+    }
+    .export-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

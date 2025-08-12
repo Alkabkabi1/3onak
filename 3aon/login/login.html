@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-ar="نظام شكاوى قسم تجربة المريض" data-en="Patient Experience Complaint System">نظام شكاوى قسم تجربة المريض</title>
+  <link rel="stylesheet" href="login.css">
+
+  <!-- خط عربي -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <!-- خط إنجليزي serif -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2 data-ar="نظام شكاوى قسم تجربة المريض" data-en="Patient Experience Complaint System">نظام شكاوى قسم تجربة المريض</h2>
+
+    <div class="tabs">
+      <button id="loginTab" class="active" onclick="showTab('login')" data-ar="مستخدم حالي" data-en="Existing User">مستخدم حالي</button>
+      <button id="registerTab" onclick="showTab('register')" data-ar="مستخدم جديد" data-en="New User">مستخدم جديد</button>
+    </div>
+
+    <!-- نموذج تسجيل الدخول -->
+    <form id="loginForm" class="form">
+      <input type="text" id="email"
+             placeholder="أدخل رقم الموظف أو البريد"
+             data-ar-placeholder="أدخل رقم الموظف أو البريد"
+             data-en-placeholder="Enter Employee ID or Email" required>
+      <input type="password" id="password"
+             placeholder="أدخل كلمة المرور"
+             data-ar-placeholder="أدخل كلمة المرور"
+             data-en-placeholder="Enter Password" required>
+      <a href="forgot-password.html" class="forgot"
+         data-ar="نسيت كلمة المرور؟"
+         data-en="Forgot Password">نسيت كلمة المرور؟</a>
+      <button type="button" class="btn"
+              onclick="login()"
+              data-ar="تسجيل الدخول"
+              data-en="Login">تسجيل الدخول</button>
+    </form>
+
+    <!-- نموذج تسجيل جديد -->
+    <form id="registerForm" class="form" style="display: none;">
+      <input type="text" id="regName"
+             placeholder="اسم الموظف"
+             data-ar-placeholder="اسم الموظف"
+             data-en-placeholder="Employee Name" required>
+      <input type="text" id="regPhone"
+             placeholder="رقم الجوال"
+             data-ar-placeholder="رقم الجوال"
+             data-en-placeholder="Phone Number" required>
+      <input type="text" id="regID"
+             placeholder="رقم الموظف"
+             data-ar-placeholder="رقم الموظف"
+             data-en-placeholder="Employee ID" required>
+      <input type="email" id="regEmail"
+             placeholder="البريد الإلكتروني"
+             data-ar-placeholder="البريد الإلكتروني"
+             data-en-placeholder="Email Address" required>
+      <input type="password" id="regPass"
+             placeholder="كلمة المرور"
+             data-ar-placeholder="كلمة المرور"
+             data-en-placeholder="Password" required>
+      <input type="password" id="regConfirmPass"
+             placeholder="تأكيد كلمة المرور"
+             data-ar-placeholder="تأكيد كلمة المرور"
+             data-en-placeholder="Confirm Password" required>
+      <button type="button" class="btn"
+              onclick="register()"
+              data-ar="تسجيل"
+              data-en="Register">تسجيل</button>
+    </form>
+
+    <p class="terms"
+       data-ar="بالتسجيل، أنت توافق على شروط الاستخدام وسياسة الخصوصية الخاصة بنا"
+       data-en="By registering, you agree to our Terms of Use and Privacy Policy">
+       بالتسجيل، أنت توافق على شروط الاستخدام وسياسة الخصوصية الخاصة بنا
+    </p>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

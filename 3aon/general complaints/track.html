@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نظام متابعة الشكاوى</title>
+   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="track.css" />
+  <script src="track.js" defer></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-content">
+         <div class="header-title" data-ar="عُــــــونَك" data-en="AOUNAK">عُــــــونَك</div>
+      <img src="/icon/hospital-logo.png" alt="شعار المستشفى" class="header-logo">
+      <button id="langToggle" class="lang-toggle-btn">
+        <img src="/icon/lang.png" alt="language" class="lang-icon" />
+        <span id="langText">العربية | English</span>
+      </button>
+    </div>  
+  </header>
+  <br>
+  <div class="back-button">
+      <a href="#" onclick="goBack()">
+        <img src="/icon/Back.png" alt="Back Icon" class="back-icon" />
+        <span data-ar="عودة" data-en="Back">عودة</span>
+      </a>
+    </a><br>
+  </div>
+  <div class="container">
+  <div class="complaint-title">
+    <h3 data-ar="تتبع حالة الشكوى" data-en="Complaint Tracking">
+      تتبع حالة الشكوى <span>#00123-2025</span>
+    </h3>
+    <p class="last-update" data-ar="آخر تحديث: 03 يوليو 2025 - الساعة 12:42 مساءً" 
+       data-en="Last updated: July 03, 2025 - 12:42 PM">
+      آخر تحديث: 03 يوليو 2025 - الساعة 12:42 مساءً
+    </p>
+  </div>
+
+  <section class="complaint-meta-box">
+    <h4 data-ar="معلومات الشكوى" data-en="Complaint Info">معلومات الشكوى</h4>
+    <div class="meta-table">
+      <div class="row">
+        <div class="label" data-ar="رقم الشكوى:" data-en="Complaint ID:">رقم الشكوى:</div>
+        <div class="value">#2025-00123</div>
+        <div class="label" data-ar="تاريخ التقديم:" data-en="Submission Date:">تاريخ التقديم:</div>
+        <div class="value" data-ar="02 يوليو 2025 - 01:30 مساءً" data-en="July 02, 2025 - 1:30 PM">02 يوليو 2025 - 01:30 مساءً</div>
+      </div>
+      <div class="row">
+        <div class="label" data-ar="رقم الهوية:" data-en="ID Number:">رقم الهوية:</div>
+        <div class="value">1023456789</div>
+        <div class="label" data-ar="رقم الجوال:" data-en="Mobile Number:">رقم الجوال:</div>
+        <div class="value">0551234567</div>
+      </div>
+      <div class="row">
+        <div class="label" data-ar="اسم المريض:" data-en="Patient Name:">اسم المريض:</div>
+        <div class="value">أحمد محمد</div>
+        <div class="label" data-ar="الموظف المسؤول:" data-en="Responsible Employee:">الموظف المسؤول:</div>
+        <div class="value">عائشة الهاجري</div>
+      </div>
+      <div class="row">
+        <div class="label" data-ar="رقم الملف الطبي:" data-en="Medical File No:">رقم الملف الطبي:</div>
+        <div class="value">124543</div>
+        <div class="label" data-ar="الجهة المحالة:" data-en="Referred To:">الجهة المحالة:</div>
+        <div class="value">إدارة الطوارئ</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline-box">
+    <div class="status-steps">
+      <div class="step-icon done">
+        <img src="/icon/Done 1.png" alt="تم تقديم الشكوى" />
+        <p data-ar="تم تقديم الشكوى" data-en="Complaint Submitted">تم تقديم الشكوى</p>
+      </div>
+      <div class="step-line active"></div>
+      <div class="step-icon active">
+        <img src="/icon/FRAME (2).png" alt="قيد المراجعة" />
+        <p data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</p>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-icon">
+        <img src="/icon/FRAME (1).png" alt="تم الرد" />
+        <p data-ar="تم الرد" data-en="Responded">تم الرد</p>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-icon">
+        <img src="/icon/FRAME 3.png" alt="مغلقة" />
+        <p data-ar="مغلقة" data-en="Closed">مغلقة</p>
+      </div>
+    </div>
+
+    <div class="timeline-updates">
+      <table>
+        <thead>
+          <tr>
+            <th data-ar="الملاحظات" data-en="Notes">الملاحظات</th>
+            <th data-ar="المسؤول" data-en="Employee">المسؤول</th>
+            <th data-ar="التاريخ" data-en="Date">التاريخ</th>
+            <th data-ar="المرحلة" data-en="Stage">المرحلة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-ar="نقص في الدواء بقسم الطوارئ" data-en="Medication shortage in ER">نقص في الدواء بقسم الطوارئ</td>
+            <td data-ar="أحمد محمد" data-en="Ahmed Mohammed">أحمد محمد</td>
+            <td>02/07/2025</td>
+            <td data-ar="تم تقديم الشكوى" data-en="Complaint Submitted">تم تقديم الشكوى</td>
+          </tr>
+          <tr>
+            <td data-ar="تم تحويلها لإدارة الطوارئ" data-en="Forwarded to ER Department">تم تحويلها لإدارة الطوارئ</td>
+            <td data-ar="عائشة الهاجري" data-en="Aisha Alhajri">عائشة الهاجري</td>
+            <td>03/07/2025</td>
+            <td data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="complaint-details-box">
+    <div class="details-header">
+      <h4 data-ar="تفاصيل الشكوى" data-en="Complaint Details">تفاصيل الشكوى</h4>
+      <span class="category" data-ar="التصنيف: صرف دواء" data-en="Category: Medication">التصنيف: صرف دواء</span>
+      <span class="type" data-ar="نوع الشكوى: الخدمات الطبية والإدارية" data-en="Type: Medical & Admin Services">نوع الشكوى: الخدمات الطبية والإدارية</span>
+    </div>
+    <div class="details-row">
+      <label data-ar="الوصف:" data-en="Description:">الوصف:</label>
+      <div class="description-box" data-ar="حضرت في موعدي ولم أجد العلاج..." data-en="I arrived for my appointment but the medication was unavailable...">حضرت في موعدي ولم أجد العلاج في الصيدلية...</div>
+    </div>
+    <div class="details-row">
+      <label data-ar="المرفقات:" data-en="Attachments:">المرفقات:</label>
+      <a href="#" class="attachments-link" data-ar="📎 معاينة المرفقات" data-en="📎 View Attachments">📎 معاينة المرفقات</a>
+    </div>
+  </section>
+
+  <section class="current-status-box">
+    <div class="status-row">
+      <div class="status-dot"></div>
+      <div><strong data-ar="الحالة الحالية:" data-en="Current Status:">الحالة الحالية:</strong> <span data-ar="قيد المراجعة" data-en="Under Review">قيد المراجعة</span></div>
+    </div>
+
+    <p class="status-line" data-ar="الموظف المعتمد: عبدالله القحطاني" data-en="Approved by: Abdullah Al-Qahtani">الموظف المعتمد: عبدالله القحطاني</p>
+    <p class="status-line" data-ar="تم إرسال خطاب رسمي لإدارة الصيدلية بخصوص البلاغ" data-en="An official letter was sent to the pharmacy regarding the complaint">تم إرسال خطاب رسمي لإدارة الصيدلية بخصوص البلاغ</p>
+    <p class="timestamp" data-ar="آخر تحديث: 03 يوليو 2025 - الساعة 12:42 مساءً" data-en="Last update: July 03, 2025 - 12:42 PM">آخر تحديث: 03 يوليو 2025 - الساعة 12:42 مساءً</p>
+
+    <div class="status-actions">
+      <a href="/general complaints/general-complaints.html" class="btn-secondary">
+        <img src="/icon/home.png" alt="home" />
+        <span data-ar="العودة لقائمة الشكاوي" data-en="Back to Complaint List">العودة لقائمة الشكاوي</span>
+      </a>
+      <button class="btn-primary" onclick="printPage()">
+        <img src="/icon/print1.png" alt="print" />
+        <span data-ar="طباعة الشكوى" data-en="Print Complaint">طباعة الشكوى</span>
+      </button>
+    </div>
+  </section>
+</div>
